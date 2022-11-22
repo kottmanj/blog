@@ -5,7 +5,7 @@ website:
   title: "blog"
   site-url: "https://www.jakobkottmann.com"
   description: "quantum computing, quantum chemistry and tequila"
-  image: "preview.png"
+  image: preview.png
   repo-url: https://github.com/kottmanj/blog
   repo-actions: [source, issue]
   navbar:

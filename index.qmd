@@ -1,7 +1,7 @@
 ---
 title: "blog"
 subtitle: "quantum computing, quantum chemistry and tequila"
-image: "preview.png"
+image: preview.png
 listing:
     contents: posts
     sort: "date desc"
