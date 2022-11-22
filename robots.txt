@@ -1,1 +1,1 @@
-Sitemap: https://kottmanj.github.io/blog/sitemap.xml
+Sitemap: https://www.jakobkottmann.com/sitemap.xml
