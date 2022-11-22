@@ -15,4 +15,4 @@ Welcome to this blog.
 
 My friend and former co-worker [Kjell](https://www.valencekjell.com/) introduced me to [quarto](https://quarto.org/) - a publishing system for scientific and technical content. It is quite amazing and I pledge to make good use of it in the near future.  
 
-If you are thinking about using quarto yourself, I recommend their online guide. The guide for blogs is for example [here](https://quarto.org/docs/websites/website-blog.html).  
+If you are thinking about using quarto yourself, I recommend their online guide. The guide for blogs is for example [here](https://quarto.org/docs/websites/website-blog.html). The source files for this blog can be found [here](https://github.com/kottmanj/blog/), they might be useful in creating your own blog.  

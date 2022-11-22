@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "Jakob's Blog"
+  title: "blog"
   site-url: "https://www.jakobkottmann.com"
   description: "quantum computing, quantum chemistry and tequila"
   repo-url: https://github.com/kottmanj/blog
@@ -12,20 +12,18 @@ website:
     right:
       - about.qmd
       - tequila.qmd
+      - text: publications
+        href: https://scholar.google.com/citations?user=KVRv74kAAAAJ&hl=de&citsig=AMD79opNUyWS3nuk_2kmCYeqBBvmkRcQZQ
       - icon: github
         href: https://github.com/kottmanj
-      - icon: twitter
-        href: https://twitter.com/jakobkottmann
-      - icon: google
-        href: https://scholar.google.com/citations?user=KVRv74kAAAAJ&hl=de&citsig=AMD79opNUyWS3nuk_2kmCYeqBBvmkRcQZQ
       - icon: mastodon
         href: https://qubit-social.xyz/@kottmann
-      - icon: jsk.jpg
-        href: https://www.researchgate.net/profile/Jakob-Kottmann
-    favicon: logo.png
+      - icon: twitter
+        href: https://twitter.com/jakobkottmann
+    favicon: favicon.ico
     twitter-card:
         site: "@jakobkottmann"
-    open-graph: truu
+    open-graph: true
     google-analytics: G-V7DRP5E70N
     cookie-consent:
         type: express

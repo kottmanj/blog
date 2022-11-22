@@ -1,5 +1,4 @@
 ---
-title: "JSK"
 subtitle: "a blog about quantum computing, quantum chemistry and tequila"
 image: "logo.png"
 listing:
