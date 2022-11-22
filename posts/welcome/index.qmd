@@ -1,0 +1,18 @@
+---
+title: "Hello Quarto World"
+author: "Jakob Kottmann"
+date: "2022-11-01"
+format:
+    html:
+        code-fold: false
+        eval: true
+jupyter: tq-1.8.1
+---
+
+Welcome to this blog.  
+  
+  
+
+My friend and former co-worker [Kjell](https://www.valencekjell.com/) introduced me to [quarto](https://quarto.org/) - a publishing system for scientific and technical content. It is quite amazing and I pledge to make good use of it in the near future.  
+
+If you are thinking about using quarto yourself, I recommend their online guide. The guide for blogs is for example [here](https://quarto.org/docs/websites/website-blog.html).  

@@ -1,0 +1,15 @@
+---
+title: " "
+subtitle: "a blog about quantum computing, quantum chemistry and tequila"
+image: "logo.png"
+listing:
+    contents: posts
+    sort: "date desc"
+    type: default
+    categories: true
+    sort-ui: false
+    filter-ui: false
+page-layout: full
+title-block-banner: true
+---
+    

@@ -1,0 +1,7 @@
+All tequila gates are parametrized as
+$$ U(\theta) = e^{-i\frac{\theta}{2} G}  $$
+
+
+were $G$ is the so called **generator** of the gate. With $G=X$ we obtain the standard $R_x(\theta)$ rotation gate while with $G=\left(X-1\right)$ we obtain the standard Pauli-$X^{\frac{\theta}{\pi}}$ gate. In other words: initializing `tq.gates.X(target=0, angle="a")` defines the gate
+$$ e^{-i\frac{\pi}{2} \left(X-1\right)} = X^{\frac{\theta}{\pi}} $$.
+

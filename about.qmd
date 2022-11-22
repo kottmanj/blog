@@ -1,0 +1,26 @@
+---
+title: "Jakob Kottmann"
+about:
+  template: solana
+  image: jsk.jpg
+  links:
+    - icon: google
+      text: gscholar
+      href: https://scholar.google.com/citations?user=KVRv74kAAAAJ&hl=de&citsig=AMD79opNUyWS3nuk_2kmCYeqBBvmkRcQZQ
+    - icon: mastodon
+      text: qubit-social
+      href: https://qubit-social.xyz/@kottmann
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com/jakobkottmann
+    - icon: github
+      text: Github
+      href: https://github.com/kottmanj
+---
+
+I'm a TT Professor at the department of computer at the University of Augsburg.  
+My research interests are in quantum algorithms, quantum chemistry and scientific computing.  
+ 
+Previously I was a postdoctoral fellow at the University of Toronto where I was part of the matter lab leading the development of the [tequila](https://github.com/tequilahub/tequila) library. Before that I did my PhD with Florian Bischoff working on multiresolution quantum chemistry with [madness](https://github.com/m-a-d-n-e-s-s/madness).  
+
+See posts in this [blog](index.qmd) for some hands-on code examples.  
