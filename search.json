@@ -11,7 +11,7 @@
     "href": "posts/welcome/index.html",
     "title": "Hello Quarto World",
     "section": "",
-    "text": "Welcome to this blog.\nMy friend and former co-worker Kjell introduced me to quarto - a publishing system for scientific and technical content. It is quite amazing and I pledge to make good use of it in the near future.\nIf you are thinking about using quarto yourself, I recommend their online guide. The guide for blogs is for example here."
+    "text": "Welcome to this blog.\nMy friend and former co-worker Kjell introduced me to quarto - a publishing system for scientific and technical content. It is quite amazing and I pledge to make good use of it in the near future.\nIf you are thinking about using quarto yourself, I recommend their online guide. The guide for blogs is for example here. The source files for this blog can be found here, they might be useful in creating your own blog."
   },
   {
     "objectID": "posts/tq-get-started/index.html",
@@ -107,7 +107,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "JSK",
+    "title": "blog",
     "section": "",
     "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n\n\n\n\n  \n\n\n\n\nElectronic Hamiltonians\n\n\n\n\n\n\n\nchemistry\n\n\n\n\n\n\n\n\n\n\n\nNov 10, 2022\n\n\nJakob Kottmann\n\n\n\n\n\n\n  \n\n\n\n\nTequila Basics: Circuits\n\n\n\n\n\n\n\ntequila\n\n\ncode\n\n\n\n\n\n\n\n\n\n\n\nNov 4, 2022\n\n\nJakob Kottmann\n\n\n\n\n\n\n  \n\n\n\n\nTequila Basics: Getting Started\n\n\n\n\n\n\n\ntequila\n\n\ncode\n\n\n\n\n\n\n\n\n\n\n\nNov 3, 2022\n\n\nJakob Kottmann\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHello Quarto World\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nJakob Kottmann\n\n\n\n\n\n\nNo matching items"
   },
