@@ -2,7 +2,11 @@ project:
   type: website
 
 website:
-  title: "blog"
+  title: "jsk"
+  site-url: "https://www.jakobkottmann.com"
+  description: "quantum computing, quantum chemistry and tequila"
+  repo-url: https://github.com/kottmanj/blog
+  repo-actions: [source, issue]
   navbar:
     logo: logo.png
     right:
@@ -18,7 +22,8 @@ website:
         href: https://qubit-social.xyz/@kottmann
       - icon: jsk.jpg
         href: https://www.researchgate.net/profile/Jakob-Kottmann
-    favicon: logo.png 
+    favicon: logo.png
+    open-graph: true 
 format:
   html:
     theme:

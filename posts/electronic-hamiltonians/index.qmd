@@ -27,7 +27,8 @@ What are electronic Hamiltonians and how can we construct them?
 - Hamiltonian is directly defined from the nuclear coordinates and charges  
 - Spin and Fermionic anti-symmetry need to be imposed on the wavefunctions   
 - Particle number is fixed  
-- Explicit computation of matrix representation unfeasible without approximations 
+- Explicit computation of matrix representation unfeasible without approximations  
+   
 **Second Quantised Formulation**:  
 - Needs a set of orbitals to be constructed
 - Spin and Fermionic anti-symmetry included in Hamiltonian  
