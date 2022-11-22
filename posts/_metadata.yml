@@ -2,7 +2,23 @@
 
 # freeze computational output
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
-freeze: false
+freeze: true
 
 # Enable banner style title blocks
 title-block-banner: true
+
+# Table of content settings
+toc: true
+
+# Add code tools
+code-tools: true
+
+# Enable comments
+comments:
+  utterances:
+    repo: "kottmanj/blog"
+    theme: "preferred-color-scheme"
+
+# better previews for links
+twitter-card:
+  site: "@jakobkottmann"
