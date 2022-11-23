@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>jsk - tequila</title>
+<title>jsk - blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,11 +31,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./favicon.ico" rel="icon">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -62,6 +65,35 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-V7DRP5E70N"></script>
 
 <script type="text/plain" cookie-consent="tracking">
@@ -88,18 +120,25 @@ cookieconsent.run({
 </script> 
   
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="jsk - tequila">
-<meta property="og:description" content="Tequila is an abstraction framework for (variational) quantum algorithms.">
+<meta property="og:title" content="jsk - blog">
+<meta property="og:description" content="quantum computing, quantum chemistry and tequila">
+<meta property="og:image" content="https://www.jakobkottmann.com/preview.png">
 <meta property="og:site-name" content="jsk">
-<meta name="twitter:title" content="jsk - tequila">
-<meta name="twitter:description" content="Tequila is an abstraction framework for (variational) quantum algorithms.">
+<meta property="og:image:height" content="2000">
+<meta property="og:image:width" content="2500">
+<meta name="twitter:title" content="jsk - blog">
+<meta name="twitter:description" content="quantum computing, quantum chemistry and tequila">
+<meta name="twitter:image" content="https://www.jakobkottmann.com/preview.png">
 <meta name="twitter:site" content="@jakobkottmann">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="2000">
+<meta name="twitter:image-width" content="2500">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -119,11 +158,11 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html">
+    <a class="nav-link active" href="./blog.html" aria-current="page">
  <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./tequila.html" aria-current="page">
+    <a class="nav-link" href="./tequila.html">
  <span class="menu-text">tequila</span></a>
   </li>  
   <li class="nav-item">
@@ -148,50 +187,189 @@ cookieconsent.run({
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">blog</h1>
+            <p class="subtitle lead">quantum computing, quantum chemistry and tequila</p>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="chemistry">chemistry <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(2)</span></div><div class="category" data-category="tequila">tequila <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
-<div class="quarto-about-marquee">
-  <div class="about-image-container">
-    <img src="tequila.png" class="about-image
-  rectangle " style="width: 30em;">
-  </div>
-  <div class="about-contents">
-    <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">tequila</h1>
-</div>
-<div class="quarto-title-meta">
-  </div>
-</header> <main class="content" id="quarto-document-content">
-<p>Tequila is an abstraction framework for (variational) quantum algorithms. It operates on abstract data structures allowing the formulation, combination, automatic differentiation and optimization of generalized objectives. Tequila can execute the underlying quantum expectation values on state of the art simulators as well as on real quantum devices.</p>
-<p>This <a href="./index.html">blog</a>, contains some hands-on examples using tequila. A good starting point is <a href="./posts/tq-get-started/index.html">here</a>.</p>
-<p>Apart from that, you can find more information here:<br>
-- <a href="https://arxiv.org/abs/2011.03057">release article</a><br>
-- <a href="https://kottmanj.github.io/tequila-in-a-nutshell/#/">tequila in a nutshell</a><br>
-- <a href="https://kottmanj.github.io/talks_and_material/">a collection of presentations</a><br>
-- <a href="https://github.com/tequilahub/tequila-tutorials">a collection of tutorial notebooks</a><br>
-- <a href="https://github.com/tequilahub/tequila">main code repository</a></p>
-<section id="contribute" class="level1">
-<h1>Contribute</h1>
-<p>Tequila is free an open source. You’re welcome to contribute if you have ideas to improve the library.<br>
-The standard way to contribute is via pull-requests or issues on <a href="https://github.com/tequilahub/tequila#how-to-contribute">github</a>. For larger projects it might be useful to let me know in advance what you are planning.</p>
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
-</section>
-</main> 
-    <div class="about-footer"><div class="about-links">
-  <a href="https://github.com/tequilahub/tequila" class="about-link">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">github</span>
-  </a>
+
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="chemistry" data-listing-date-sort="1668056400000" data-listing-file-modified-sort="1669223492988" data-listing-reading-time-sort="7.82">
+<div class="thumbnail">
+<p><a href="./posts/electronic-hamiltonians/index.html"> <img src="./posts/electronic-hamiltonians/hamiltonian.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/electronic-hamiltonians/index.html">
+<h3 class="no-anchor listing-title">
+Electronic Hamiltonians
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('chemistry'); return false;">
+chemistry
 </div>
 </div>
-  </div>
+<a href="./posts/electronic-hamiltonians/index.html">
+<div class="listing-description">
+What are electronic Hamiltonians and how can we construct them?
 </div>
- <!-- /main -->
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/electronic-hamiltonians/index.html">
+<div class="listing-date">
+Nov 10, 2022
+</div>
+<div class="listing-author">
+Jakob Kottmann
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="tequila,code" data-listing-date-sort="1667534400000" data-listing-file-modified-sort="1669123048383" data-listing-reading-time-sort="3.67">
+<div class="thumbnail">
+<p><a href="./posts/tq-circuits/index.html"> <img src="./posts/tq-circuits/tq-circuits-pic.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/tq-circuits/index.html">
+<h3 class="no-anchor listing-title">
+Tequila Basics: Circuits
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('tequila'); return false;">
+tequila
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
+code
+</div>
+</div>
+<a href="./posts/tq-circuits/index.html">
+<div class="listing-description">
+A brief introduction to tequila circuits
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/tq-circuits/index.html">
+<div class="listing-date">
+Nov 4, 2022
+</div>
+<div class="listing-author">
+Jakob Kottmann
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="tequila,code" data-listing-date-sort="1667448000000" data-listing-file-modified-sort="1669115814896" data-listing-reading-time-sort="2.495">
+<div class="thumbnail">
+<p><a href="./posts/tq-get-started/index.html"> <img src="./posts/tq-get-started/tq-basics-pic.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/tq-get-started/index.html">
+<h3 class="no-anchor listing-title">
+Tequila Basics: Getting Started
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('tequila'); return false;">
+tequila
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
+code
+</div>
+</div>
+<a href="./posts/tq-get-started/index.html">
+<div class="listing-description">
+Create some abstract quantum functions with tequila
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/tq-get-started/index.html">
+<div class="listing-date">
+Nov 3, 2022
+</div>
+<div class="listing-author">
+Jakob Kottmann
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1667275200000" data-listing-file-modified-sort="1669121772470" data-listing-reading-time-sort="0.44">
+<div class="thumbnail">
+<a href="./posts/welcome/index.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./posts/welcome/index.html"></a></p>
+</div>
+<div class="body">
+<a href="./posts/welcome/index.html">
+<h3 class="no-anchor listing-title">
+Hello Quarto World
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+Welcome to this blog.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/welcome/index.html">
+<div class="listing-date">
+Nov 1, 2022
+</div>
+<div class="listing-author">
+Jakob Kottmann
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -327,6 +505,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;
