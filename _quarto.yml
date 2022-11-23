@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "blog"
+  title: "jsk"
   site-url: "https://www.jakobkottmann.com"
   description: "quantum computing, quantum chemistry and tequila"
   image: preview.png
@@ -11,16 +11,15 @@ website:
   navbar:
     logo: logo.png
     right:
-      - about.qmd
+      - text: "blog"
+        file: blog.qmd
       - tequila.qmd
+      - text: "research"
+        file: research.qmd
       - text: publications
         href: https://scholar.google.com/citations?user=KVRv74kAAAAJ&hl=de&citsig=AMD79opNUyWS3nuk_2kmCYeqBBvmkRcQZQ
-      - icon: github
-        href: https://github.com/kottmanj
-      - icon: mastodon
-        href: https://qubit-social.xyz/@kottmann
-      - icon: twitter
-        href: https://twitter.com/jakobkottmann
+      - text: "about"
+        file: index.qmd
   favicon: favicon.ico
   twitter-card:
       site: "@jakobkottmann"
