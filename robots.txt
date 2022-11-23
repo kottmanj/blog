@@ -1,1 +1,1 @@
-Sitemap: https://www.jakobkottmann.com/sitemap.xml
+Sitemap: https://jakobkottmann.com/sitemap.xml
