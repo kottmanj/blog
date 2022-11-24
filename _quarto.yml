@@ -3,7 +3,7 @@ project:
 
 website:
   title: "jsk"
-  site-url: "https://www.jakobkottmann.com"
+  site-url: "https://jakobkottmann.com"
   description: "quantum computing, quantum chemistry and tequila"
   image: preview.png
   repo-url: https://github.com/kottmanj/blog

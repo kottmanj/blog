@@ -1,5 +1,11 @@
 ---
 title: "Jakob Kottmann"
+image: preview.png
+description: "quantum computing, quantum chemistry and tequila"
+site-url: "https://jakobkottmann.com"
+twitter-card:
+    site: "@jakobkottmann"
+open-graph: true
 about:
   template: solana
   image: jsk.jpg

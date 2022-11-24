@@ -2,12 +2,70 @@
 title: "research"
 page-layout: full
 title-block-banner: true
+execute:
+    eval: false
+jupyter: tq-1.8.3
 ---
+My research focuses on developing hybrid quantum algorithms based on physical insight leveraging quantum and classical resources. Those developments are realized within automatized software frameworks so that other researchers can apply, extend, and integrate them into their works.  
 
-::: {.callout-caution collapse="false"}
-## Under Construction
+Here are three examples focusing on different aspects of variational ground state optimization :   
+1. qubits: [JCPL 2021]() ([arxiv:XXXX.YYYY](https://arxiv.org/abs/2011.03057))  
+2. circuits: [PRA 2021]() ([arxiv:XXXX.YYYY](https://arxiv.org/abs/2011.03057))   
+3.  gradients: [Chemical Science]() ([arxiv:XXXX.YYYY](https://arxiv.org/abs/2011.03057))   
+through the [tequila](tequila.qmd) library all three developments are automatically available to interested partys  
 
-Content will appear soon
+```{python}
+#| eval: false
+import tequila tq
 
-:::
+mol = tq.Molecule(geometry="beh2.xyz") # uses 1
+
+U = mol.make_ansatz("SPA")             # uses 2
+H = mol.make.hamiltonian()
+E = tq.ExpectationValue(H=H, U=U)
+
+result = tq.minimize(E)                # uses 3
+```
+
+
+# Scientific Computing \& Software
+
+<center>
+![](research-tq.png){width=400}
+</center>
+With high hopes for a powerful future impact on various scientific and industrial applications, the ecosystem of quantum algorithms is proliferating. In the current stage,
+the field is maturing to a point where it becomes essential to demonstrate new ideas
+explicitly on actual use cases. The problems often become too complicated for pure
+theoretical estimates. In addition, one usually deals with a multitude of connected algorithmic procedures and heuristics, rendering manual engineering unfeasible. At this stage, automatized frameworks are crucial to advance further.  
+
+Representative publications: 
+ 
+- [QST 2021]() ([arxiv:2011.03057](https://arxiv.org/abs/2011.03057)) 
+• [Chemical Science 2020]() ([arxiv:XXXX.YYYY](https://arxiv.org/abs/2011.03057))  
+
+# Approximations \& Intperpretability
+<center>
+![](research-models.png){width=400}
+</center>
+An integral part of science is the formulation of abstract concepts capable of capturing the
+essential aspects of complex processes to keep the concept as simple as possible. Currently, such ideas
+for the construction of quantum circuits are in high demand. For example, in the context of variational approaches, the design of the circuit determines which states we can reach through variational optimization. It is often the crucial element for success. Interpretable techniques allow us to construct circuits faster and predict their performance more confidently.  
+
+Representative publications:  
+- [arxiv:XXXX.YYYY](https://arxiv.org/abs/2011.03057)
+- [PRA 2022]() ([arxiv:XXXX.YYYY](https://arxiv.org/abs/2011.03057))
+
+# Multiresolution Quantum Chemistry
+<center>
+![](research-mra.png){width=400}
+</center>
+Traditional electronic structure methods are usually rigid in their numerical representation and rely upon
+globally pre-defined sets of Gaussian functions
+whose application requires substantial knowledge
+if we want to interpret or predict chemical reactions. Multiresolution quantum chemistry offers an alternative where the orbitals are represented by a multiresolution analysis - a recursive decomposition of the spatial one-particle Hilbert space that allows automatic adaptive construction of a scale-invariant spectral element representation. From a user perspective, we can ignore the numerical details. Astonishingly, this often also holds for the development of new applications.  
+
+Representative publications:   
+- [JCTC 2018]()  
+- [JCP 2020]()  
+
 
