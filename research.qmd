@@ -8,11 +8,19 @@ jupyter: tq-1.8.3
 ---
 My research focuses on developing hybrid quantum algorithms based on physical insight leveraging quantum and classical resources. Those developments are realized within automatized software frameworks so that other researchers can apply, extend, and integrate them into their works.  
 
+<center>
+![](research.png){width=300}
+</center>
+
 Here are three examples focusing on different aspects of variational ground state optimization :   
-1. qubits: [JCPL 2021]() ([arxiv:XXXX.YYYY](https://arxiv.org/abs/2011.03057))  
-2. circuits: [PRA 2021]() ([arxiv:XXXX.YYYY](https://arxiv.org/abs/2011.03057))   
-3.  gradients: [Chemical Science]() ([arxiv:XXXX.YYYY](https://arxiv.org/abs/2011.03057))   
+
+1. qubits: [JCPL 2021](https://doi.org/10.1021/acs.jpclett.0c03410) ([arxiv:2008.02819](https://arxiv.org/abs/2008.02819))   
+2. circuits: [PRA 2022](https://doi.org/10.1103/PhysRevA.105.032449) ([arxiv:2105.03836](https://arxiv.org/abs/2105.03836))   
+3. gradients: [Chemical Science](https://doi.org/10.1039/D0SC06627C) ([arxiv:2011.05938](https://arxiv.org/abs/2011.05938))   
+  
+
 through the [tequila](tequila.qmd) library all three developments are automatically available to interested partys  
+  
 
 ```{python}
 #| eval: false
@@ -29,10 +37,12 @@ result = tq.minimize(E)                # uses 3
 
 
 # Scientific Computing \& Software
-
+<br/>
 <center>
 ![](research-tq.png){width=400}
 </center>
+<br/>
+ 
 With high hopes for a powerful future impact on various scientific and industrial applications, the ecosystem of quantum algorithms is proliferating. In the current stage,
 the field is maturing to a point where it becomes essential to demonstrate new ideas
 explicitly on actual use cases. The problems often become too complicated for pure
@@ -40,20 +50,28 @@ theoretical estimates. In addition, one usually deals with a multitude of connec
 
 Representative publications: 
  
-- [QST 2021]() ([arxiv:2011.03057](https://arxiv.org/abs/2011.03057)) 
-• [Chemical Science 2020]() ([arxiv:XXXX.YYYY](https://arxiv.org/abs/2011.03057))  
+- [QST 2021](https://doi.org/10.1088/2058-9565/abe567) ([arxiv:2011.03057](https://arxiv.org/abs/2011.03057)): the [tequila](tequila.qmd) system   
+- [Chemical Science](https://doi.org/10.1039/D0SC06627C) ([arxiv:2011.05938](https://arxiv.org/abs/2011.05938)): automatized and fast gradients for unitary coupled-cluster   
+
+Blog entries:  
+
+- [tequila basics](posts/tq-get-started/index.qmd)  
+- [tequila circuits](posts/tq-circuits/index.qmd)  
 
 # Approximations \& Intperpretability
+<br/>
 <center>
 ![](research-models.png){width=400}
 </center>
+<br/>
 An integral part of science is the formulation of abstract concepts capable of capturing the
 essential aspects of complex processes to keep the concept as simple as possible. Currently, such ideas
 for the construction of quantum circuits are in high demand. For example, in the context of variational approaches, the design of the circuit determines which states we can reach through variational optimization. It is often the crucial element for success. Interpretable techniques allow us to construct circuits faster and predict their performance more confidently.  
 
-Representative publications:  
-- [arxiv:XXXX.YYYY](https://arxiv.org/abs/2011.03057)
-- [PRA 2022]() ([arxiv:XXXX.YYYY](https://arxiv.org/abs/2011.03057))
+Representative publications: 
+ 
+- [arxiv:2207.12421](https://arxiv.org/abs/2207.12421): leverage the concept of chemical graphs   
+- [PRA 2022](https://doi.org/10.1103/PhysRevA.105.032449) ([arxiv:2105.03836](https://arxiv.org/abs/2105.03836)): classically simulable circuits and their integration into a hirarchy of approximations   
 
 # Multiresolution Quantum Chemistry
 <center>
@@ -62,10 +80,12 @@ Representative publications:
 Traditional electronic structure methods are usually rigid in their numerical representation and rely upon
 globally pre-defined sets of Gaussian functions
 whose application requires substantial knowledge
-if we want to interpret or predict chemical reactions. Multiresolution quantum chemistry offers an alternative where the orbitals are represented by a multiresolution analysis - a recursive decomposition of the spatial one-particle Hilbert space that allows automatic adaptive construction of a scale-invariant spectral element representation. From a user perspective, we can ignore the numerical details. Astonishingly, this often also holds for the development of new applications.  
+if we want to interpret or predict chemical reactions. Multiresolution quantum chemistry offers an alternative where the orbitals are represented by a multiresolution analysis - a recursive decomposition of the spatial one-particle Hilbert space that allows automatic adaptive construction of a scale-invariant spectral element representation. From a user perspective, we can ignore the numerical details. Astonishingly, this often also holds for the development of new applications.
+I use [madness](https://arxiv.org/abs/1507.01888) for implementation and integration of the developed methods.  
 
-Representative publications:   
-- [JCTC 2018]()  
-- [JCP 2020]()  
+Representative publications:  
 
+- [JCPL 2021](https://doi.org/10.1021/acs.jpclett.0c03410) ([arxiv:2008.02819](https://arxiv.org/abs/2008.02819)): qubit reductions through MRA based PNOs    
+- [JCP 2020](https://doi.org/10.1063/1.5141880): numerically exact MP2-PNO with explicit correlation   
+- [JCTC 2018](https://doi.org/10.1021/acs.jctc.7b00694): numerically exact CC2 with explicit correlation  
 

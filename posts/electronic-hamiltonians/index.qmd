@@ -23,13 +23,17 @@ What are electronic Hamiltonians and how can we construct them?
   
   
 ## tldr:  
+
 **First Quantized Formulation**:  
+
 - Hamiltonian is directly defined from the nuclear coordinates and charges  
 - Spin and Fermionic anti-symmetry need to be imposed on the wavefunctions   
 - Particle number is fixed  
 - Explicit computation of matrix representation unfeasible without approximations  
+
    
 **Second Quantized Formulation**:  
+
 - Needs a set of orbitals to be constructed   
 - Spin and Fermionic anti-symmetry included in Hamiltonian   
 - Particle number is not fixed   
@@ -38,9 +42,10 @@ What are electronic Hamiltonians and how can we construct them?
 
 ## First Quantized Formulation
 
-The word molecule often stands for $N_\text{e}$ electrons (with coordinatres $r_k$) moving in a potential created by atomic nuclei - assumed to be fixed point-charges with coordinates $R_A$ and charges $N_A$. The electronic Hamiltonian is then the operator expressing the interactions of the electrons in that potential
+The word molecule often stands for $N_\text{e}$ electrons with coordinates $r_k$ moving in a potential created by atomic nuclei - assumed to be fixed point-charges with coordinates $R_A$ and charges $N_A$. The electronic Hamiltonian is then the operator expressing the interactions of the electrons in that potential
 $$H =  \sum_{k}^{N_\text{e}} h\left(r_k\right) + \sum_{k}^{N_\text{e}} \sum_{l<k} g\left(r_k,r_l\right) + V_\text{nn}.$$
 We write it three parts and a constant, which are in atomic units:  
+
 1. One-body interactions:
 $$ h(r) = T(r) + V_\text{ne}(r) $$
 including the kinetic energy of the electrons and the Coulombic attraction between electrons and nuclear charges  
@@ -50,6 +55,7 @@ $$g(r_k,r_l) = \frac{1}{\| r_k - r_l \|}$$
 3. A constant term: Coulombic repulsion between the nuclear charges  
 $$V_\text{nn} = \sum_{A<B} \frac{N_A N_B}{\|R_A - R_b\|} $$  
 which is just a constant for a given molecular structure.  
+
 
 With this, we have fully defined it, and the lowest eigenvalue of this differential operator gives the corresponding ground state energy.
 To ensure that the ground state describes a multi-electron system, we must impose restrictions on the wavefunction - Fermions have a spin and anti-symmetric permutation symmetry.
@@ -136,7 +142,7 @@ $$
 
 All possible Slater-determinants in the given basis:  
 
-closed-shell singlets (both electrons in the same spatial orbital):   
+- closed-shell singlets (both electrons in the same spatial orbital):   
 $$
 \det\left(\phi_0 \phi_1 \right) = \frac{1}{\sqrt{2}}\psi_0(r_1) \psi_0(r_1) \otimes \left( \lvert \downarrow \uparrow \rangle - \lvert \uparrow \downarrow \rangle \right)
 $$
@@ -144,7 +150,7 @@ $$
 \det\left(\phi_3 \phi_4\right) = \frac{1}{\sqrt{2}}\psi_1(r_1) \psi_1(r_1) \otimes \left( \lvert \downarrow \uparrow \rangle - \lvert \uparrow \downarrow \rangle \right)
 $$
 
-open-shell polarized triplets:  
+- open-shell polarized triplets:  
 $$
 \det\left(\phi_1 \phi_3\right) = \left(\psi_0(r_1) \psi_1(r_2) + \psi_1(r_1) \psi_0(r_2)\right) \otimes \left( \lvert \uparrow \uparrow \rangle  \right) 
 $$
@@ -153,7 +159,7 @@ $$
 \det\left(\phi_2 \phi_4\right) = \left(\psi_0(r_1) \psi_1(r_2) + \psi_1(r_1) \psi_0(r_2)\right) \otimes \left( \lvert \downarrow \downarrow \rangle  \right)
 $$
 
-open-shell (with broken spin symmetry - recombinable into non-polarized triplet state and one additional singlet state):  
+- open-shell (with broken spin symmetry - recombinable into non-polarized triplet state and one additional singlet state):   
 $$
 \det\left(\phi_0\phi_2\right) = \frac{1}{\sqrt{2}}\left(\phi_0(x_1) \phi_2(x_2) - \phi_2(x_1) \phi_0(x2) \right)
 $$
@@ -178,21 +184,22 @@ In this two electron example this is no problem, the task of computing all matri
 In second quantization it is sufficient to compute the one- and two-body integrals given above to define the Hamiltonian. They grow with the fourth power of the basis size rendering the task always feasible.  
 A general wavefunction can be constructed from all possible linear combinations of electronic configurations in the given spin-orbital basis - denoted by so called occupation vectors representing which spin orbitals are occupied and not. In this case we have 4 spin orbitals then therefore $2^4=16$ different configurations:  
 
-vacuum 
+- vacuum   
 $$\langle 0000 \rangle$$
-single electron
+
+- single electron  
 $$
 \lvert 1000 \rangle, \vert 0100 \rangle, \lvert 0010 \rangle, \lvert 0001\rangle,
 $$
-two electrons
+- two electrons  
 $$
 \lvert 1100 \rangle, \lvert 0011 \rangle, \lvert 1001 \rangle, \lvert 0110 \rangle, \lvert 1010\rangle, \lvert 0101 \rangle,
 $$
-three electrons
+- three electrons  
 $$
 \lvert 1110 \rangle, \lvert 1101 \rangle, \lvert 1011 \rangle, \lvert 0111 \rangle,
 $$
-and four-electrons
+- four-electrons  
 $$
 \lvert 1111 \rangle.
 $$
