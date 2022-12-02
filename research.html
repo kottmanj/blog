@@ -311,6 +311,25 @@ cookieconsent.run({
 </li>
 <li><a href="https://doi.org/10.1021/acs.jctc.7b00694">JCTC 2018</a>: numerically exact CC2 with explicit correlation</li>
 </ul>
+</section>
+<section id="black-box-methods" class="level1">
+<h1>Black-Box Methods</h1>
+<br>
+<center>
+<img src="black-box.png" class="img-fluid" width="400">
+</center>
+<p><br></p>
+<p>To render new numerical algorithms or heuristics applicable, it is essential to provide them within a robust and easy-to-use software framework with useful defaults for all internal parameters and thresholds. Ideally, the method can be applied as a black box - meaning the user does not need to bring any knowledge about the underlying details to use the software. In reality, we often can not provide a full black box, but for most methods we can get close. Within my research, I aim to come as close as possible to this ideal. Some developments would not have been possible without this paradigm in the first place.</p>
+<p>Representative publications where robust black-box procedures, as illustrated in the code-box on top of this page, were crucial for the demonstration of new ideas:</p>
+<ul>
+<li><a href="https://doi.org/10.1021/acs.jpclett.0c03410">JCPL 2021</a> (see above) relies on the implementation of <a href="https://doi.org/10.1063/1.5141880">JCP 2020</a> with itself relies on the automatized construction of suitable guess orbitals implemented in <a href="https://doi.org/10.1039/C5CP00345H">PCCP 2015</a><br>
+</li>
+<li><a href="https://doi.org/10.1103/PhysRevResearch.4.033217">PRR 2022</a>: Conceptual work on defining trust-intervals for variational approaches led by Maurice Weber (ETH). We applied our black-box approaches to circuit construction, gradient computation and basis-set-free orbital generation.<br>
+</li>
+<li><a href="https://doi.org/10.1088/2058-9565/abdca4">QST 2021</a>: Work led by Zi-Jian Zhang (UofT) on prescreening of operator pools for adaptive circuit construction. We applied our black-box approaches to basis-set-free orbital generation.<br>
+</li>
+<li><a href="https://doi.org/10.1039/D2CP00247G">PCCP 2022</a>: Work led by Philipp Schleich (UofT) on energy corrections with explicit correlation. We applied our black-box approaches to circuit construction, gradient computation and basis-set-free orbital generation.</li>
+</ul>
 
 
 </section>
