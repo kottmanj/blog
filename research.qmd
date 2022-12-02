@@ -89,3 +89,23 @@ Representative publications:
 - [JCP 2020](https://doi.org/10.1063/1.5141880): numerically exact MP2-PNO with explicit correlation   
 - [JCTC 2018](https://doi.org/10.1021/acs.jctc.7b00694): numerically exact CC2 with explicit correlation  
 
+# Black-Box Methods
+
+<br/>
+<center>
+![](black-box.png){width=400}
+</center>
+<br/>
+
+To render new numerical algorithms or heuristics applicable, it is essential to provide them within a robust and easy-to-use software framework with useful defaults for all internal parameters and thresholds. Ideally, the method can be applied as a black box - meaning the user does not need to bring any knowledge about the underlying details to use the software. In reality, we often can not provide a full black box, but for most methods we can get close. Within my research, I aim to come as close as possible to this ideal. Some developments would not have been possible without this paradigm in the first place.  
+
+Representative publications where robust black-box procedures, as illustrated in the code-box on top of this page, were crucial for the demonstration of new ideas:
+
+- [JCPL 2021](https://doi.org/10.1021/acs.jpclett.0c03410) (see above) relies on the implementation of [JCP 2020](https://doi.org/10.1063/1.5141880) with itself relies on the automatized construction of suitable guess orbitals implemented in [PCCP 2015](https://doi.org/10.1039/C5CP00345H)  
+- [PRR 2022](https://doi.org/10.1103/PhysRevResearch.4.033217): Conceptual work on defining trust-intervals for variational approaches led by Maurice Weber (ETH). We applied our black-box approaches to circuit construction, gradient computation and basis-set-free orbital generation.   
+- [QST 2021](https://doi.org/10.1088/2058-9565/abdca4): Work led by Zi-Jian Zhang (UofT) on prescreening of operator pools for adaptive circuit construction. We applied our black-box approaches to basis-set-free orbital generation.   
+- [PCCP 2022](https://doi.org/10.1039/D2CP00247G): Work led by Philipp Schleich (UofT) on energy corrections with explicit correlation. We applied our black-box approaches to circuit construction, gradient computation and basis-set-free orbital generation.   
+
+
+
+
