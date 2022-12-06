@@ -89,6 +89,11 @@ Representative publications:
 - [JCP 2020](https://doi.org/10.1063/1.5141880): numerically exact MP2-PNO with explicit correlation   
 - [JCTC 2018](https://doi.org/10.1021/acs.jctc.7b00694): numerically exact CC2 with explicit correlation  
 
+Blog entries:  
+
+- [what is MRA](posts/mra-basics/index.qmd)
+
+
 # Black-Box Methods
 
 <br/>
