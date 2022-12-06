@@ -2,34 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jakobkottmann.com/posts/electronic-hamiltonians/index.html</loc>
-    <lastmod>2022-12-02T08:52:23.320Z</lastmod>
+    <lastmod>2022-12-06T12:55:01.454Z</lastmod>
   </url>
   <url>
     <loc>https://jakobkottmann.com/posts/welcome/index.html</loc>
-    <lastmod>2022-12-02T08:52:23.844Z</lastmod>
+    <lastmod>2022-12-06T12:55:02.070Z</lastmod>
   </url>
   <url>
     <loc>https://jakobkottmann.com/posts/tq-get-started/index.html</loc>
-    <lastmod>2022-12-02T08:52:24.744Z</lastmod>
+    <lastmod>2022-12-06T12:55:02.986Z</lastmod>
   </url>
   <url>
     <loc>https://jakobkottmann.com/posts/tq-circuits/index.html</loc>
-    <lastmod>2022-12-02T08:52:25.532Z</lastmod>
+    <lastmod>2022-12-06T12:55:03.898Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jakobkottmann.com/posts/mra-basics/index.html</loc>
+    <lastmod>2022-12-06T12:55:10.606Z</lastmod>
   </url>
   <url>
     <loc>https://jakobkottmann.com/blog.html</loc>
-    <lastmod>2022-12-02T08:52:25.968Z</lastmod>
+    <lastmod>2022-12-06T12:55:11.138Z</lastmod>
   </url>
   <url>
     <loc>https://jakobkottmann.com/index.html</loc>
-    <lastmod>2022-12-02T08:52:26.348Z</lastmod>
+    <lastmod>2022-12-06T12:55:11.674Z</lastmod>
   </url>
   <url>
     <loc>https://jakobkottmann.com/research.html</loc>
-    <lastmod>2022-12-02T08:52:26.892Z</lastmod>
+    <lastmod>2022-12-06T12:55:12.342Z</lastmod>
   </url>
   <url>
     <loc>https://jakobkottmann.com/tequila.html</loc>
-    <lastmod>2022-12-02T08:52:27.268Z</lastmod>
+    <lastmod>2022-12-06T12:55:12.754Z</lastmod>
   </url>
 </urlset>
