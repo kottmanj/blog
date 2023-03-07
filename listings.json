@@ -1,0 +1,12 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/mra-basics/index.html",
+      "/posts/electronic-hamiltonians/index.html",
+      "/posts/tq-circuits/index.html",
+      "/posts/tq-get-started/index.html",
+      "/posts/welcome/index.html"
+    ]
+  }
+]

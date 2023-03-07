@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jakob Kottmann">
+<meta name="dcterms.date" content="2022-12-01">
+
+<title>jsk -</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-V7DRP5E70N"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-V7DRP5E70N', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="jsk -">
+<meta property="og:description" content="Part 1: A first glimpse with hands-on examples.">
+<meta property="og:image" content="https://jakobkottmann.com/posts/mra-basics/preview.png">
+<meta property="og:site-name" content="jsk">
+<meta property="og:image:height" content="700">
+<meta property="og:image:width" content="1000">
+<meta name="twitter:title" content="jsk -">
+<meta name="twitter:description" content="Part 1: A first glimpse with hands-on examples.">
+<meta name="twitter:image" content="https://jakobkottmann.com/posts/mra-basics/preview.png">
+<meta name="twitter:site" content="@jakobkottmann">
+<meta name="twitter:image-height" content="700">
+<meta name="twitter:image-width" content="1000">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../logo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">jsk</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">
+ <span class="menu-text">blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tequila.html">
+ <span class="menu-text">tequila</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html">
+ <span class="menu-text">research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=KVRv74kAAAAJ&amp;hl=de&amp;citsig=AMD79opNUyWS3nuk_2kmCYeqBBvmkRcQZQ">
+ <span class="menu-text">publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">about</span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-multiresolution-analysis" id="toc-what-is-multiresolution-analysis" class="nav-link active" data-scroll-target="#what-is-multiresolution-analysis">What is Multiresolution Analysis</a>
+  <ul class="collapse">
+  <li><a href="#defining-the-basis" id="toc-defining-the-basis" class="nav-link" data-scroll-target="#defining-the-basis">Defining the Basis</a></li>
+  <li><a href="#integration" id="toc-integration" class="nav-link" data-scroll-target="#integration">Integration</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul></li>
+  <li><a href="#multiresolution-analysis" id="toc-multiresolution-analysis" class="nav-link" data-scroll-target="#multiresolution-analysis">Multiresolution Analysis</a></li>
+  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap Up</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#dependencies" id="toc-dependencies" class="nav-link" data-scroll-target="#dependencies">Dependencies</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/kottmanj/blog/blob/main/posts/mra-basics/index.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/kottmanj/blog/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+<section id="what-is-multiresolution-analysis" class="level1">
+<h1>What is Multiresolution Analysis</h1>
+<p>Part 1: A first glimpse with hands-on examples.</p>
+<ul>
+<li>Legendre polynomials as basis</li>
+<li>Scaling functions</li>
+<li>shifting, rescaling, integration</li>
+</ul>
+<br>
+<center>
+<img src="preview.png" class="img-fluid" width="400">
+</center>
+<p><br></p>
+<p>In the following, we will explore how to use Legendre polynomials as a basis for functions in <span class="math inline">\({L}^2\left(\left[0,1\right]\right)\)</span> - the Hilbertspace of <a href="https://en.wikipedia.org/wiki/Lp_space#Special_cases">square-integrable functions</a> on the interval <span class="math inline">\([0,1]\)</span>. From this, it is only a minor step to represent functions on an arbitrary interval <span class="math inline">\([a,b]\)</span> by shifting and rescaling and a bit more technical development for hypercubes <span class="math inline">\([a,b]^d\)</span>.</p>
+<p>Within my (research)[research.qmd], I often use MRA to describe electronic wavefunctions such as orbitals (<span class="math inline">\(f \in L^2\left(\left[a,b\right]^3\right)\)</span> - see for example <a href="https://doi.org/10.1063/1.5141880">here</a>) and pair functions (<span class="math inline">\(f \in L^2\left(\left[a,b\right]^3\right)\)</span> - see for example <a href="https://doi.org/10.1021/acs.jctc.7b00694">here</a>). In this context, my MRA codebase of choice is <a href="https://github.com/m-a-d-n-e-s-s/madness">madness</a> - a high-performance c++ library. In this post, we will, however, use simple python code to illustrate the basic principles of an MRA representation.</p>
+<section id="defining-the-basis" class="level2">
+<h2 class="anchored" data-anchor-id="defining-the-basis">Defining the Basis</h2>
+<p>The <a href="https://en.wikipedia.org/wiki/Legendre_polynomials">Legendre polynomials</a> <span class="math inline">\(P_k(x)\)</span> are a system of orthogonal and <a href="https://en.wikipedia.org/wiki/Legendre_polynomials#Orthogonality_and_completeness">complete</a> functions on <span class="math inline">\([-1,1]\)</span>. Hence, we can use them as a basis on <span class="math inline">\([0,1]\)</span> and approximate any function on that interval as a linear combination of a finite subset <span class="math inline">\(P_k\)</span>.</p>
+<p>To be consistent with some of the literature listed below, we will rescale the polynomials to the unit interval <span class="math display">\[
+\tilde{P}_k(x) = \sqrt{2k+1} P_k\left(2x-1\right)
+\]</span> where the prefactor ensures normalization. We can define this as small class in python code:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LegendreBasisFunction:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, k, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.k <span class="op">=</span> k</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, x, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>x<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        N <span class="op">=</span> numpy.sqrt((<span class="fl">2.0</span><span class="op">*</span><span class="va">self</span>.k<span class="op">+</span><span class="fl">1.0</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> N<span class="op">*</span>scipy.special.legendre(n<span class="op">=</span><span class="va">self</span>.k)(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>All that is left know to approximate a function <span class="math inline">\(f \in L^2\left(\left[0,1\right]\right)\)</span> as <span class="math display">\[
+f \approx \sum_k c_l \tilde{P}_l(x) \quad c_l = \int_0^1 f(x)P_l(x) \operatorname{d}x
+\]</span> is to compute the coefficients <span class="math inline">\(c_k\)</span>.</p>
+</section>
+<section id="integration" class="level2">
+<h2 class="anchored" data-anchor-id="integration">Integration</h2>
+<p>When using the polynomials as basis it is convenient to employ Gauss-Legendre <a href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature">quadrature</a> for integration <span class="math display">\[
+\langle f \vert g \rangle = \int_0^1 f(x)g(x) \operatorname{d}x  \approx \sum_i wᵢ f(xᵢ)g(xᵢ)
+\]</span> where wᵢ and xᵢ are the points and wheights of the quadrature (we can conveniently import them from scipy). In code this looks like:</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> integrate(f,order,a<span class="op">=</span><span class="dv">0</span>,b<span class="op">=</span><span class="dv">1</span>, verbose<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    integrate in interval [a,b] subset to [0,1]</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    x, w <span class="op">=</span> scipy.special.roots_legendre(n<span class="op">=</span>order<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># change of interval</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> (b<span class="op">-</span>a)<span class="op">/</span><span class="dv">2</span><span class="op">*</span>x <span class="op">+</span> (a<span class="op">+</span>b)<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> (b<span class="op">-</span>a)<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> N<span class="op">*</span>f(x)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> numpy.<span class="bu">sum</span>(w<span class="op">*</span>y)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># convenient for inner product integrals</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inner(f,g,order,a<span class="op">=</span><span class="dv">0</span>,b<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> integrate(<span class="kw">lambda</span> x: f(x)<span class="op">*</span>g(x), order<span class="op">=</span>order, a<span class="op">=</span>a, b<span class="op">=</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>where we already included the quadrature on <a href="https://en.wikipedia.org/wiki/Gaussian_quadrature#Change_of_interval">arbitrary intervals</a> <span class="math inline">\([a,b]\)</span>.</p>
+<p>Let’s test if everything works by checking orthonormality of our basis</p>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>kmax <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k1 <span class="kw">in</span> <span class="bu">range</span>(kmax):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    f1 <span class="op">=</span> LegendreBasisFunction(k<span class="op">=</span>k1)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k2 <span class="kw">in</span> <span class="bu">range</span>(k1<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        f2 <span class="op">=</span> LegendreBasisFunction(k<span class="op">=</span>k2)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        ip <span class="op">=</span> inner(f1,f2,order<span class="op">=</span><span class="bu">max</span>(k1,k2))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        out <span class="op">+=</span> <span class="st">"</span><span class="sc">{:+2.3f}</span><span class="st">"</span>.<span class="bu">format</span>(ip)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    out <span class="op">+=</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>+1.000
++0.000+1.000
++0.000+0.000+1.000
+-0.000-0.000-0.000+1.000
+-0.000-0.000-0.000-0.000+1.000
+</code></pre>
+</div>
+</div>
+<p>Looks good so far!</p>
+</section>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example">Example</h2>
+<p>Let’s represent some function with the Polynomial basis we have constructed above. We will use the function <span class="math display">\[
+f(x) = \sin\left( e^{-3.0*\left(2x-1\right)} \right)\frac{\sin\left(2x-1\right)}{2x-1}.
+\]</span> It looks like</p>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>x<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    a<span class="op">=</span> numpy.exp(<span class="op">-</span><span class="dv">10</span><span class="op">*</span>(x<span class="op">+</span><span class="fl">0.5</span>)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    b<span class="op">=</span> numpy.sinc(x)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> numpy.sin(numpy.exp(<span class="op">-</span><span class="fl">3.0</span><span class="op">*</span>(x)))<span class="op">*</span>b</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> numpy.linspace(<span class="fl">0.0</span>,<span class="fl">1.0</span>,<span class="dv">500</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> f(x)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt.plot(x,fx, color<span class="op">=</span><span class="st">"navy"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-5-output-1.png" width="582" height="411"></p>
+</div>
+</div>
+<p>We can create the function in the basis of our rescaled Legendre Polynomials up to order <span class="math inline">\(k\)</span> as <span class="math display">\[
+f(x) = \sum_{l=1}^{k} c_l \tilde{P}_l(x), \quad c_l = \langle f  \vert \tilde{P}_l \rangle.
+\]</span> and compute the coefficients with our Gauss-Legendre integration function defined above.</p>
+<p>We will do this by defining the class <code>ProjectedFunction</code></p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProjectedFunction:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, f, k<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> k<span class="op">&gt;</span><span class="dv">0</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.k <span class="op">=</span> k</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># initialize basis functions</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.basis <span class="op">=</span> [LegendreBasisFunction(k<span class="op">=</span>kk) <span class="cf">for</span> kk <span class="kw">in</span> <span class="bu">range</span>(k)]</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># compute the coefficients in the legedre basis</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># by computing the integral via Gauss-Legedre Quadrature</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.coeffs <span class="op">=</span> [inner(f,<span class="va">self</span>.basis[n],order<span class="op">=</span>k) <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(k)]</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, x, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> [<span class="va">self</span>.coeffs[n]<span class="op">*</span><span class="va">self</span>.basis[n](x) <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.k)]</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">sum</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This class projects a given function <code>f</code> onto the basis spanned by <span class="math inline">\(P_l(x)\)</span> with <span class="math inline">\(l\leq k\)</span> - more formally we have an implementation of <span class="math display">\[
+\text{span}\left\{ \tilde{P}_l \right\}_{l=1}^{k} \subset {L}^2\left(\left[0,1\right]\right).
+\]</span><br>
+Through the <code>__call__</code> operator we can use initialized objects of <code>ProjectedFunction</code> just like regular functions.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>F <span class="op">=</span> ProjectedFunction(f, k<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> F(<span class="fl">1.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s see how our example function above looks like on different orders <span class="math inline">\(k\)</span>:</p>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x and y defined before</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,fx, color<span class="op">=</span><span class="st">"navy"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> [<span class="st">"forestgreen"</span>, <span class="st">"tab:blue"</span>, <span class="st">"tab:orange"</span>, <span class="st">"tab:red"</span>]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,k <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">40</span>]):</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    F <span class="op">=</span> ProjectedFunction(f, k<span class="op">=</span>k)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    plt.plot(x,F(x), color<span class="op">=</span>color[i], linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="st">"k=</span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-8-output-1.png" width="590" height="411"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="multiresolution-analysis" class="level1">
+<h1>Multiresolution Analysis</h1>
+<p>In a multiresolution analysis (MRA), we construct the basis by shifting and rescaling an original collection of basis functions. In our case, those are the <span class="math inline">\(\left\{\tilde{P}_l\right\}_{l=1}^{l=k}\)</span> functions with a fixed <span class="math inline">\(k\)</span> that span the space <span class="math display">\[
+V_0^0 = \text{span}  \left\{\tilde{P}_l\right\}_{l=1}^{l=k},
+\]</span> where we define the functions piecewise on the interval <span class="math inline">\([0,1]\)</span> - meaning we set them to zero elsewhere. Such functions, in general, are called <em>scaling functions</em> or sometimes <em>father wavelets</em>. They are sometimes referred to as <a href="https://doi.org/10.1137/0524016"><em>Alpert scaling functions</em></a> when constructed from Polynomials. Their shifted and rescaled spaces are <span class="math display">\[
+V_n^l = \text{span} \left\{ 2^{n/2} P_l\left(2^n x - l\right) \right\}_{l=0}^{k},
+\]</span> and we can combine the spaces on the same <em>refinement level</em> <span class="math inline">\(n\)</span> to <span class="math display">\[
+V_n = \bigoplus_{l=0}^{2^n-1} V_n^l.
+\]</span> With this construction, we can approximate functions in <span class="math inline">\({L}^2\left(\left[0,1\right]\right)\)</span> with arbitrary accuracy. Or, more formally, <span class="math display">\[
+\overline{\bigcup_{n=0}^{\infty} V_n} = {L}\left(\left[0,1\right]\right).
+\]</span> meaning the closure of the union of all those shited and rescaled polyomials can be identified as the <span class="math inline">\({L}^2\)</span> space. We can implement this with some slight modifications to our <code>ProjectedFunction</code> class from before.</p>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProjectedFunction:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rescale(<span class="va">self</span>, f):</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="va">self</span>.n</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        l <span class="op">=</span> <span class="va">self</span>.l</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">@numpy.vectorize</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> window(f,x):</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> x<span class="op">&lt;</span><span class="fl">0.0</span> <span class="kw">or</span> x<span class="op">&gt;</span><span class="fl">1.0</span>:</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="fl">0.0</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> f(x)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        N <span class="op">=</span> <span class="dv">2</span><span class="op">**</span>(<span class="fl">0.5</span><span class="op">*</span>n)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">lambda</span> x: N<span class="op">*</span>window(f,<span class="dv">2</span><span class="op">**</span>n<span class="op">*</span>x<span class="op">-</span>l)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, f, k, n<span class="op">=</span><span class="dv">0</span>, l<span class="op">=</span><span class="dv">0</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> k<span class="op">&gt;</span><span class="dv">0</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> l<span class="op">&lt;</span><span class="dv">2</span><span class="op">**</span>n</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.k <span class="op">=</span> k</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n <span class="op">=</span> n</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.l <span class="op">=</span> l</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># initialize basis functions</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.basis <span class="op">=</span> [<span class="va">self</span>.rescale(LegendreBasisFunction(k<span class="op">=</span>kk)) <span class="cf">for</span> kk <span class="kw">in</span> <span class="bu">range</span>(k)]</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.a <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">**</span>n)<span class="op">*</span>l</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.b <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">**</span>n)<span class="op">*</span>(l<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.coeffs <span class="op">=</span> [inner(f,<span class="va">self</span>.basis[n],order<span class="op">=</span>k, a<span class="op">=</span><span class="va">self</span>.a, b<span class="op">=</span><span class="va">self</span>.b) <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(k)]</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, x, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> [<span class="va">self</span>.coeffs[n]<span class="op">*</span><span class="va">self</span>.basis[n](x) <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.k)]</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">sum</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Let’s see how our example function looks when projected against a space assembled from different <span class="math inline">\(V_n^l\)</span> with <span class="math inline">\(k=5\)</span>. Let’s start on level <span class="math inline">\(n=1\)</span> where we have split the interval <span class="math inline">\([0,1]\)</span> into the intervals <span class="math inline">\([0,0.5]\)</span> and <span class="math inline">\([0.5,1.0]\)</span>. Our approximation space is then <span class="math display">\[
+V = V_1^0 \bigoplus V_1^1
+\]</span> and the our example function projected onto <span class="math inline">\(V\)</span> is</p>
+<div class="cell" data-execution_count="9">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>L  <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">1</span>,l<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">1</span>,l<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.plot(x,fx, color<span class="op">=</span><span class="st">"black"</span>, label<span class="op">=</span><span class="st">"f(x)"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>plt.plot(x,L(x), color<span class="op">=</span><span class="st">"tab:red"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_1^0$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>plt.plot(x,R(x), color<span class="op">=</span><span class="st">"navy"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_1^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-10-output-1.png" width="582" height="411"></p>
+</div>
+</div>
+<p>The left part looks like it could benefit from a bit more resolution: So we replace <span class="math inline">\(V_1^0\)</span> by <span class="math inline">\(V_2^0 \bigoplus V_2^1\)</span> <span class="math display">\[
+V = V_2^0 \bigoplus V_2^1 \bigoplus V_1^1.
+\]</span> Projected to <span class="math inline">\(V\)</span> our function know looks like</p>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>LL  <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">2</span>,l<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>LR  <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">2</span>,l<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.plot(x,fx, color<span class="op">=</span><span class="st">"black"</span>, label<span class="op">=</span><span class="st">"f(x)"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.plot(x,LL(x), color<span class="op">=</span><span class="st">"tab:red"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_2^0$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.plot(x,LR(x), color<span class="op">=</span><span class="st">"forestgreen"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_2^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.plot(x,R(x), color<span class="op">=</span><span class="st">"navy"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_1^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-11-output-1.png" width="590" height="411"></p>
+</div>
+</div>
+<p>Let’s repreat this two times more with the leftmost space. Our approximate space is then</p>
+<p><span class="math display">\[
+V = V_4^0 \bigoplus V_4^1 \bigoplus V_3^1 \bigoplus V_2^1 \bigoplus V_1^1
+\]</span> which results in the representation</p>
+<div class="cell" data-execution_count="11">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>LLLR  <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">4</span>,l<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>LLLL  <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">4</span>,l<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>LLR  <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">3</span>,l<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.plot(x,fx, color<span class="op">=</span><span class="st">"black"</span>, label<span class="op">=</span><span class="st">"f(x)"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.plot(x,LLLL(x), color<span class="op">=</span><span class="st">"tab:red"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_4^0$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.plot(x,LLLR(x), color<span class="op">=</span><span class="st">"tab:blue"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_4^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.plot(x,LLR(x), color<span class="op">=</span><span class="st">"tab:green"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_3^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.plot(x,LR(x), color<span class="op">=</span><span class="st">"forestgreen"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_2^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>plt.plot(x,R(x), color<span class="op">=</span><span class="st">"navy"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_1^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-12-output-1.png" width="582" height="411"></p>
+</div>
+</div>
+<p>doesn’t look too bad.</p>
+</section>
+<section id="wrap-up" class="level1">
+<h1>Wrap Up</h1>
+<p>We have seen a small toy model of MRA in the context of initial function projection. An initial approximation space <span class="math inline">\(V_0\)</span> spanned by a set of <span class="math inline">\(k\)</span> polynomials supported on the intercal <span class="math inline">\([0,1]\)</span> is shifted and rescaled to new spaces <span class="math inline">\(V_1^0\)</span> and <span class="math inline">\(V_1^1\)</span> supported on the invervals <span class="math inline">\([0,\frac{1}{2}]\)</span> and <span class="math inline">\([\frac{1}{2},1]\)</span>. With this procedure we have increased the <em>resolution</em> of the original interval. The process can now be repeated for the new spaces to further increase the resolution locally leading to a tree-like structure of the representation (see the very first figure in this post). This covers the essential idea behind multiresolution representations of functions.</p>
+<p>However, we have yet to see the <em>wavelets</em> - the orthogonal complement of <span class="math inline">\(V_0\)</span> in <span class="math inline">\(V_{1}\)</span>. They will be the key in automatizing the refinement process sketched above.</p>
+</section>
+<section id="further-reading" class="level1">
+<h1>Further Reading</h1>
+<ul>
+<li><a href="https://edoc.hu-berlin.de/bitstream/handle/18452/20118/dissertation_kottmann_jakob.pdf">Chapter 2</a>: Condensed overview of MRA with Alpert-Wavelets including operator construction and <span class="math inline">\(N\)</span>-dimensional functions.</li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S006532761930019X">Review</a> from Florian Bischoff: operator construction, operations on MRA representations (addition, multiplication) and applications in chemistry.</li>
+<li><a href="https://munin.uit.no/bitstream/handle/10037/6151/thesis.pdf?sequence=2">Chapter 2</a>: Dissertation from Stig-Rune Jensen</li>
+<li><a href="https://escholarship.org/content/qt99r1z7ww/qt99r1z7ww_noSplash_ce6a3bf4261de4dc6ac9c7a680842b7f.pdf">Original</a> article from Bradley Alpert</li>
+</ul>
+<p>Codebases:</p>
+<ul>
+<li><a href="https://github.com/m-a-d-n-e-s-s/madness">madness</a> (c++)<br>
+</li>
+<li><a href="https://github.com/MRChemSoft/mrchem">mrchem</a> (c++)</li>
+</ul>
+</section>
+<section id="dependencies" class="level1">
+<h1>Dependencies</h1>
+<p>In order to run the code from this post you need numpy (version 1.21) and scipy (version 1.9.3):</p>
+<pre class="{bash}"><code>pip install --upgrade numpy 
+pip install --upgrade scipy</code></pre>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="kottmanj/blog" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async="">
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb14" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> ""</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Jakob Kottmann"</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-12-01"</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [mra, code]</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "preview.png"</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="an">image-width:</span><span class="co"> "1cm"</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="an">image-height:</span><span class="co"> "1cm"</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">    html:</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">        code-fold: false</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">        eval: true</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">        freeze: false</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> tq-pypi</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu"># What is Multiresolution Analysis</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>Part 1: A first glimpse with hands-on examples.   </span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Legendre polynomials as basis</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Scaling functions</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>shifting, rescaling, integration</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/br&gt;</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;center&gt;</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="al">![](preview.png)</span>{width=400}</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/center&gt;</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/br&gt;</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>In the following, we will explore how to use Legendre polynomials as a basis for functions in ${L}^2\left(\left<span class="co">[</span><span class="ot">0,1\right</span><span class="co">]</span>\right)$ - the Hilbertspace of <span class="co">[</span><span class="ot">square-integrable functions</span><span class="co">](https://en.wikipedia.org/wiki/Lp_space#Special_cases)</span> on the interval $<span class="co">[</span><span class="ot">0,1</span><span class="co">]</span>$. From this, it is only a minor step to represent functions on an arbitrary interval $<span class="co">[</span><span class="ot">a,b</span><span class="co">]</span>$ by shifting and rescaling and a bit more technical development for hypercubes $<span class="co">[</span><span class="ot">a,b</span><span class="co">]</span>^d$.  </span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>Within my (research)<span class="co">[</span><span class="ot">research.qmd</span><span class="co">]</span>, I often use MRA to describe electronic wavefunctions such as orbitals ($f \in L^2\left(\left<span class="co">[</span><span class="ot">a,b\right</span><span class="co">]</span>^3\right)$ - see for example <span class="co">[</span><span class="ot">here</span><span class="co">](https://doi.org/10.1063/1.5141880)</span>) and pair functions ($f \in L^2\left(\left<span class="co">[</span><span class="ot">a,b\right</span><span class="co">]</span>^3\right)$ - see for example <span class="co">[</span><span class="ot">here</span><span class="co">](https://doi.org/10.1021/acs.jctc.7b00694)</span>). In this context, my MRA codebase of choice is <span class="co">[</span><span class="ot">madness</span><span class="co">](https://github.com/m-a-d-n-e-s-s/madness)</span> - a high-performance c++ library. In this post, we will, however, use simple python code to illustrate the basic principles of an MRA representation.  </span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Defining the Basis</span></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">Legendre polynomials</span><span class="co">](https://en.wikipedia.org/wiki/Legendre_polynomials)</span> $P_k(x)$ are a system of orthogonal and <span class="co">[</span><span class="ot">complete</span><span class="co">](https://en.wikipedia.org/wiki/Legendre_polynomials#Orthogonality_and_completeness)</span> functions on $<span class="co">[</span><span class="ot">-1,1</span><span class="co">]</span>$. Hence, we can use them as a basis on $<span class="co">[</span><span class="ot">0,1</span><span class="co">]</span>$ and approximate any function on that interval as a linear combination of a finite subset $P_k$.  </span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>To be consistent with some of the literature listed below, we will rescale the polynomials to the unit interval</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>\tilde{P}_k(x) = \sqrt{2k+1} P_k\left(2x-1\right)</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>where the prefactor ensures normalization. We can define this as small class in python code:</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy</span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LegendreBasisFunction:</span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, k, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.k <span class="op">=</span> k</span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, x, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>x<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>        N <span class="op">=</span> numpy.sqrt((<span class="fl">2.0</span><span class="op">*</span><span class="va">self</span>.k<span class="op">+</span><span class="fl">1.0</span>))</span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> N<span class="op">*</span>scipy.special.legendre(n<span class="op">=</span><span class="va">self</span>.k)(x)</span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>All that is left know to approximate a function $f \in L^2\left(\left<span class="co">[</span><span class="ot">0,1\right</span><span class="co">]</span>\right)$ as</span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a>f \approx \sum_k c_l \tilde{P}_l(x) \quad c_l = \int_0^1 f(x)P_l(x) \operatorname{d}x</span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>is to compute the coefficients $c_k$.  </span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## Integration</span></span>
+<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a>When using the polynomials as basis it is convenient to employ Gauss-Legendre <span class="co">[</span><span class="ot">quadrature</span><span class="co">](https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature)</span> for integration</span>
+<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a>\langle f \vert g \rangle = \int_0^1 f(x)g(x) \operatorname{d}x  \approx \sum_i wᵢ f(xᵢ)g(xᵢ)</span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a>where wᵢ and xᵢ are the points and wheights of the quadrature (we can conveniently import them from scipy). In code this looks like:</span>
+<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> integrate(f,order,a<span class="op">=</span><span class="dv">0</span>,b<span class="op">=</span><span class="dv">1</span>, verbose<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a><span class="co">    integrate in interval [a,b] subset to [0,1]</span></span>
+<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a>    x, w <span class="op">=</span> scipy.special.roots_legendre(n<span class="op">=</span>order<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a>    <span class="co"># change of interval</span></span>
+<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> (b<span class="op">-</span>a)<span class="op">/</span><span class="dv">2</span><span class="op">*</span>x <span class="op">+</span> (a<span class="op">+</span>b)<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> (b<span class="op">-</span>a)<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> N<span class="op">*</span>f(x)</span>
+<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> numpy.<span class="bu">sum</span>(w<span class="op">*</span>y)</span>
+<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a><span class="co"># convenient for inner product integrals</span></span>
+<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inner(f,g,order,a<span class="op">=</span><span class="dv">0</span>,b<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> integrate(<span class="kw">lambda</span> x: f(x)<span class="op">*</span>g(x), order<span class="op">=</span>order, a<span class="op">=</span>a, b<span class="op">=</span>b)</span>
+<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a>where we already included the quadrature on <span class="co">[</span><span class="ot">arbitrary intervals</span><span class="co">](https://en.wikipedia.org/wiki/Gaussian_quadrature#Change_of_interval)</span> $<span class="co">[</span><span class="ot">a,b</span><span class="co">]</span>$.   </span>
+<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a>Let's test if everything works by checking orthonormality of our basis</span>
+<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a>kmax <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb14-108"><a href="#cb14-108" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k1 <span class="kw">in</span> <span class="bu">range</span>(kmax):</span>
+<span id="cb14-109"><a href="#cb14-109" aria-hidden="true" tabindex="-1"></a>    f1 <span class="op">=</span> LegendreBasisFunction(k<span class="op">=</span>k1)</span>
+<span id="cb14-110"><a href="#cb14-110" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k2 <span class="kw">in</span> <span class="bu">range</span>(k1<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb14-111"><a href="#cb14-111" aria-hidden="true" tabindex="-1"></a>        f2 <span class="op">=</span> LegendreBasisFunction(k<span class="op">=</span>k2)</span>
+<span id="cb14-112"><a href="#cb14-112" aria-hidden="true" tabindex="-1"></a>        ip <span class="op">=</span> inner(f1,f2,order<span class="op">=</span><span class="bu">max</span>(k1,k2))</span>
+<span id="cb14-113"><a href="#cb14-113" aria-hidden="true" tabindex="-1"></a>        out <span class="op">+=</span> <span class="st">"</span><span class="sc">{:+2.3f}</span><span class="st">"</span>.<span class="bu">format</span>(ip)</span>
+<span id="cb14-114"><a href="#cb14-114" aria-hidden="true" tabindex="-1"></a>    out <span class="op">+=</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb14-115"><a href="#cb14-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-116"><a href="#cb14-116" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(out)</span>
+<span id="cb14-117"><a href="#cb14-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-118"><a href="#cb14-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-119"><a href="#cb14-119" aria-hidden="true" tabindex="-1"></a>Looks good so far!  </span>
+<span id="cb14-120"><a href="#cb14-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-121"><a href="#cb14-121" aria-hidden="true" tabindex="-1"></a><span class="fu">## Example</span></span>
+<span id="cb14-122"><a href="#cb14-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-123"><a href="#cb14-123" aria-hidden="true" tabindex="-1"></a>Let's represent some function with the Polynomial basis we have constructed above.</span>
+<span id="cb14-124"><a href="#cb14-124" aria-hidden="true" tabindex="-1"></a>We will use the function</span>
+<span id="cb14-125"><a href="#cb14-125" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-126"><a href="#cb14-126" aria-hidden="true" tabindex="-1"></a> f(x) = \sin\left( e^{-3.0*\left(2x-1\right)} \right)\frac{\sin\left(2x-1\right)}{2x-1}.</span>
+<span id="cb14-127"><a href="#cb14-127" aria-hidden="true" tabindex="-1"></a> $$</span>
+<span id="cb14-128"><a href="#cb14-128" aria-hidden="true" tabindex="-1"></a>It looks like</span>
+<span id="cb14-131"><a href="#cb14-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-132"><a href="#cb14-132" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb14-133"><a href="#cb14-133" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb14-134"><a href="#cb14-134" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>x<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb14-135"><a href="#cb14-135" aria-hidden="true" tabindex="-1"></a>    a<span class="op">=</span> numpy.exp(<span class="op">-</span><span class="dv">10</span><span class="op">*</span>(x<span class="op">+</span><span class="fl">0.5</span>)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb14-136"><a href="#cb14-136" aria-hidden="true" tabindex="-1"></a>    b<span class="op">=</span> numpy.sinc(x)</span>
+<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> numpy.sin(numpy.exp(<span class="op">-</span><span class="fl">3.0</span><span class="op">*</span>(x)))<span class="op">*</span>b</span>
+<span id="cb14-138"><a href="#cb14-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-139"><a href="#cb14-139" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> numpy.linspace(<span class="fl">0.0</span>,<span class="fl">1.0</span>,<span class="dv">500</span>)</span>
+<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> f(x)</span>
+<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a>plt.plot(x,fx, color<span class="op">=</span><span class="st">"navy"</span>)</span>
+<span id="cb14-143"><a href="#cb14-143" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-144"><a href="#cb14-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-145"><a href="#cb14-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-146"><a href="#cb14-146" aria-hidden="true" tabindex="-1"></a>We can create the function in the basis of our rescaled Legendre Polynomials up to order $k$ as</span>
+<span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-148"><a href="#cb14-148" aria-hidden="true" tabindex="-1"></a>f(x) = \sum_{l=1}^{k} c_l \tilde{P}_l(x), \quad c_l = \langle f  \vert \tilde{P}_l \rangle.</span>
+<span id="cb14-149"><a href="#cb14-149" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-150"><a href="#cb14-150" aria-hidden="true" tabindex="-1"></a>and compute the coefficients with our Gauss-Legendre integration function defined above.  </span>
+<span id="cb14-151"><a href="#cb14-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-152"><a href="#cb14-152" aria-hidden="true" tabindex="-1"></a>We will do this by defining the class <span class="in">`ProjectedFunction`</span> </span>
+<span id="cb14-155"><a href="#cb14-155" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-156"><a href="#cb14-156" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProjectedFunction:</span>
+<span id="cb14-157"><a href="#cb14-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, f, k<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> k<span class="op">&gt;</span><span class="dv">0</span></span>
+<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.k <span class="op">=</span> k</span>
+<span id="cb14-161"><a href="#cb14-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-162"><a href="#cb14-162" aria-hidden="true" tabindex="-1"></a>        <span class="co"># initialize basis functions</span></span>
+<span id="cb14-163"><a href="#cb14-163" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.basis <span class="op">=</span> [LegendreBasisFunction(k<span class="op">=</span>kk) <span class="cf">for</span> kk <span class="kw">in</span> <span class="bu">range</span>(k)]</span>
+<span id="cb14-164"><a href="#cb14-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-165"><a href="#cb14-165" aria-hidden="true" tabindex="-1"></a>        <span class="co"># compute the coefficients in the legedre basis</span></span>
+<span id="cb14-166"><a href="#cb14-166" aria-hidden="true" tabindex="-1"></a>        <span class="co"># by computing the integral via Gauss-Legedre Quadrature</span></span>
+<span id="cb14-167"><a href="#cb14-167" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.coeffs <span class="op">=</span> [inner(f,<span class="va">self</span>.basis[n],order<span class="op">=</span>k) <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(k)]</span>
+<span id="cb14-168"><a href="#cb14-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-169"><a href="#cb14-169" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, x, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb14-170"><a href="#cb14-170" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> [<span class="va">self</span>.coeffs[n]<span class="op">*</span><span class="va">self</span>.basis[n](x) <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.k)]</span>
+<span id="cb14-171"><a href="#cb14-171" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">sum</span>(y)</span>
+<span id="cb14-172"><a href="#cb14-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-173"><a href="#cb14-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a>This class projects a given function <span class="in">`f`</span> onto the basis spanned by $P_l(x)$ with $l\leq k$ - more formally we have an implementation of</span>
+<span id="cb14-175"><a href="#cb14-175" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-176"><a href="#cb14-176" aria-hidden="true" tabindex="-1"></a>\text{span}\left<span class="sc">\{</span> \tilde{P}_l \right\}_{l=1}^{k} \subset {L}^2\left(\left<span class="co">[</span><span class="ot">0,1\right</span><span class="co">]</span>\right).</span>
+<span id="cb14-177"><a href="#cb14-177" aria-hidden="true" tabindex="-1"></a>$$  </span>
+<span id="cb14-178"><a href="#cb14-178" aria-hidden="true" tabindex="-1"></a>Through the <span class="in">`__call__`</span> operator we can use initialized objects of <span class="in">`ProjectedFunction`</span> just like regular functions.  </span>
+<span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a>F <span class="op">=</span> ProjectedFunction(f, k<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb14-184"><a href="#cb14-184" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> F(<span class="fl">1.0</span>)</span>
+<span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-186"><a href="#cb14-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-187"><a href="#cb14-187" aria-hidden="true" tabindex="-1"></a>Let's see how our example function above looks like on different orders $k$:</span>
+<span id="cb14-188"><a href="#cb14-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-191"><a href="#cb14-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-192"><a href="#cb14-192" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb14-193"><a href="#cb14-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-194"><a href="#cb14-194" aria-hidden="true" tabindex="-1"></a><span class="co"># x and y defined before</span></span>
+<span id="cb14-195"><a href="#cb14-195" aria-hidden="true" tabindex="-1"></a>plt.plot(x,fx, color<span class="op">=</span><span class="st">"navy"</span>)</span>
+<span id="cb14-196"><a href="#cb14-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-197"><a href="#cb14-197" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> [<span class="st">"forestgreen"</span>, <span class="st">"tab:blue"</span>, <span class="st">"tab:orange"</span>, <span class="st">"tab:red"</span>]</span>
+<span id="cb14-198"><a href="#cb14-198" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,k <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">40</span>]):</span>
+<span id="cb14-199"><a href="#cb14-199" aria-hidden="true" tabindex="-1"></a>    F <span class="op">=</span> ProjectedFunction(f, k<span class="op">=</span>k)</span>
+<span id="cb14-200"><a href="#cb14-200" aria-hidden="true" tabindex="-1"></a>    plt.plot(x,F(x), color<span class="op">=</span>color[i], linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="st">"k=</span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb14-201"><a href="#cb14-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-202"><a href="#cb14-202" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb14-203"><a href="#cb14-203" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-204"><a href="#cb14-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span> </span>
+<span id="cb14-205"><a href="#cb14-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-206"><a href="#cb14-206" aria-hidden="true" tabindex="-1"></a><span class="fu"># Multiresolution Analysis</span></span>
+<span id="cb14-207"><a href="#cb14-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-208"><a href="#cb14-208" aria-hidden="true" tabindex="-1"></a>In a multiresolution analysis (MRA), we construct the basis by shifting and rescaling an original collection of basis functions. </span>
+<span id="cb14-209"><a href="#cb14-209" aria-hidden="true" tabindex="-1"></a>In our case, those are the $\left<span class="sc">\{</span>\tilde{P}_l\right\}_{l=1}^{l=k}$ functions with a fixed $k$ that span the space</span>
+<span id="cb14-210"><a href="#cb14-210" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-211"><a href="#cb14-211" aria-hidden="true" tabindex="-1"></a>V_0^0 = \text{span}  \left<span class="sc">\{</span>\tilde{P}_l\right\}_{l=1}^{l=k},</span>
+<span id="cb14-212"><a href="#cb14-212" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-213"><a href="#cb14-213" aria-hidden="true" tabindex="-1"></a>where we define the functions piecewise on the interval $<span class="co">[</span><span class="ot">0,1</span><span class="co">]</span>$ - meaning we set them to zero elsewhere. </span>
+<span id="cb14-214"><a href="#cb14-214" aria-hidden="true" tabindex="-1"></a>Such functions, in general, are called *scaling functions* or sometimes *father wavelets*. They are sometimes referred to as [*Alpert scaling functions*](https://doi.org/10.1137/0524016) when constructed from Polynomials. Their shifted and rescaled spaces are</span>
+<span id="cb14-215"><a href="#cb14-215" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-216"><a href="#cb14-216" aria-hidden="true" tabindex="-1"></a>V_n^l = \text{span} \left<span class="sc">\{</span> 2^{n/2} P_l\left(2^n x - l\right) \right<span class="sc">\}</span>_{l=0}^{k},</span>
+<span id="cb14-217"><a href="#cb14-217" aria-hidden="true" tabindex="-1"></a>$$ </span>
+<span id="cb14-218"><a href="#cb14-218" aria-hidden="true" tabindex="-1"></a>and we can combine the spaces on the same *refinement level* $n$ to</span>
+<span id="cb14-219"><a href="#cb14-219" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-220"><a href="#cb14-220" aria-hidden="true" tabindex="-1"></a>V_n = \bigoplus_{l=0}^{2^n-1} V_n^l.</span>
+<span id="cb14-221"><a href="#cb14-221" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-222"><a href="#cb14-222" aria-hidden="true" tabindex="-1"></a>With this construction, we can approximate functions in ${L}^2\left(\left<span class="co">[</span><span class="ot">0,1\right</span><span class="co">]</span>\right)$ with arbitrary accuracy. Or, more formally, </span>
+<span id="cb14-223"><a href="#cb14-223" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-224"><a href="#cb14-224" aria-hidden="true" tabindex="-1"></a>\overline{\bigcup_{n=0}^{\infty} V_n} = {L}\left(\left<span class="co">[</span><span class="ot">0,1\right</span><span class="co">]</span>\right).</span>
+<span id="cb14-225"><a href="#cb14-225" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-226"><a href="#cb14-226" aria-hidden="true" tabindex="-1"></a>meaning the closure of the union of all those shited and rescaled polyomials can be identified as the ${L}^2$ space. </span>
+<span id="cb14-227"><a href="#cb14-227" aria-hidden="true" tabindex="-1"></a>We can implement this with some slight modifications to our <span class="in">`ProjectedFunction`</span> class from before.  </span>
+<span id="cb14-228"><a href="#cb14-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-231"><a href="#cb14-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-232"><a href="#cb14-232" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb14-233"><a href="#cb14-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-234"><a href="#cb14-234" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProjectedFunction:</span>
+<span id="cb14-235"><a href="#cb14-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-236"><a href="#cb14-236" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rescale(<span class="va">self</span>, f):</span>
+<span id="cb14-237"><a href="#cb14-237" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="va">self</span>.n</span>
+<span id="cb14-238"><a href="#cb14-238" aria-hidden="true" tabindex="-1"></a>        l <span class="op">=</span> <span class="va">self</span>.l</span>
+<span id="cb14-239"><a href="#cb14-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-240"><a href="#cb14-240" aria-hidden="true" tabindex="-1"></a>        <span class="at">@numpy.vectorize</span></span>
+<span id="cb14-241"><a href="#cb14-241" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> window(f,x):</span>
+<span id="cb14-242"><a href="#cb14-242" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> x<span class="op">&lt;</span><span class="fl">0.0</span> <span class="kw">or</span> x<span class="op">&gt;</span><span class="fl">1.0</span>:</span>
+<span id="cb14-243"><a href="#cb14-243" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="fl">0.0</span></span>
+<span id="cb14-244"><a href="#cb14-244" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb14-245"><a href="#cb14-245" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> f(x)</span>
+<span id="cb14-246"><a href="#cb14-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-247"><a href="#cb14-247" aria-hidden="true" tabindex="-1"></a>        N <span class="op">=</span> <span class="dv">2</span><span class="op">**</span>(<span class="fl">0.5</span><span class="op">*</span>n)</span>
+<span id="cb14-248"><a href="#cb14-248" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">lambda</span> x: N<span class="op">*</span>window(f,<span class="dv">2</span><span class="op">**</span>n<span class="op">*</span>x<span class="op">-</span>l)</span>
+<span id="cb14-249"><a href="#cb14-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-250"><a href="#cb14-250" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, f, k, n<span class="op">=</span><span class="dv">0</span>, l<span class="op">=</span><span class="dv">0</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb14-251"><a href="#cb14-251" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> k<span class="op">&gt;</span><span class="dv">0</span></span>
+<span id="cb14-252"><a href="#cb14-252" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> l<span class="op">&lt;</span><span class="dv">2</span><span class="op">**</span>n</span>
+<span id="cb14-253"><a href="#cb14-253" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.k <span class="op">=</span> k</span>
+<span id="cb14-254"><a href="#cb14-254" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n <span class="op">=</span> n</span>
+<span id="cb14-255"><a href="#cb14-255" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.l <span class="op">=</span> l</span>
+<span id="cb14-256"><a href="#cb14-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-257"><a href="#cb14-257" aria-hidden="true" tabindex="-1"></a>        <span class="co"># initialize basis functions</span></span>
+<span id="cb14-258"><a href="#cb14-258" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.basis <span class="op">=</span> [<span class="va">self</span>.rescale(LegendreBasisFunction(k<span class="op">=</span>kk)) <span class="cf">for</span> kk <span class="kw">in</span> <span class="bu">range</span>(k)]</span>
+<span id="cb14-259"><a href="#cb14-259" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.a <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">**</span>n)<span class="op">*</span>l</span>
+<span id="cb14-260"><a href="#cb14-260" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.b <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">**</span>n)<span class="op">*</span>(l<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb14-261"><a href="#cb14-261" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.coeffs <span class="op">=</span> [inner(f,<span class="va">self</span>.basis[n],order<span class="op">=</span>k, a<span class="op">=</span><span class="va">self</span>.a, b<span class="op">=</span><span class="va">self</span>.b) <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(k)]</span>
+<span id="cb14-262"><a href="#cb14-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-263"><a href="#cb14-263" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, x, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb14-264"><a href="#cb14-264" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> [<span class="va">self</span>.coeffs[n]<span class="op">*</span><span class="va">self</span>.basis[n](x) <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.k)]</span>
+<span id="cb14-265"><a href="#cb14-265" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">sum</span>(y)</span>
+<span id="cb14-266"><a href="#cb14-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-267"><a href="#cb14-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-268"><a href="#cb14-268" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-269"><a href="#cb14-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-270"><a href="#cb14-270" aria-hidden="true" tabindex="-1"></a>Let's see how our example function looks when projected against a space assembled from different $V_n^l$ with $k=5$. Let's start on level $n=1$ where we have split the interval $<span class="co">[</span><span class="ot">0,1</span><span class="co">]</span>$ into the intervals $<span class="co">[</span><span class="ot">0,0.5</span><span class="co">]</span>$ and $<span class="co">[</span><span class="ot">0.5,1.0</span><span class="co">]</span>$. Our approximation space is then</span>
+<span id="cb14-271"><a href="#cb14-271" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-272"><a href="#cb14-272" aria-hidden="true" tabindex="-1"></a>V = V_1^0 \bigoplus V_1^1</span>
+<span id="cb14-273"><a href="#cb14-273" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-274"><a href="#cb14-274" aria-hidden="true" tabindex="-1"></a>and the our example function projected onto $V$ is </span>
+<span id="cb14-277"><a href="#cb14-277" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-278"><a href="#cb14-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb14-279"><a href="#cb14-279" aria-hidden="true" tabindex="-1"></a>L  <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">1</span>,l<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb14-280"><a href="#cb14-280" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">1</span>,l<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb14-281"><a href="#cb14-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-282"><a href="#cb14-282" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb14-283"><a href="#cb14-283" aria-hidden="true" tabindex="-1"></a>plt.plot(x,fx, color<span class="op">=</span><span class="st">"black"</span>, label<span class="op">=</span><span class="st">"f(x)"</span>)</span>
+<span id="cb14-284"><a href="#cb14-284" aria-hidden="true" tabindex="-1"></a>plt.plot(x,L(x), color<span class="op">=</span><span class="st">"tab:red"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_1^0$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb14-285"><a href="#cb14-285" aria-hidden="true" tabindex="-1"></a>plt.plot(x,R(x), color<span class="op">=</span><span class="st">"navy"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_1^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb14-286"><a href="#cb14-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-287"><a href="#cb14-287" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb14-288"><a href="#cb14-288" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-289"><a href="#cb14-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-290"><a href="#cb14-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-291"><a href="#cb14-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-292"><a href="#cb14-292" aria-hidden="true" tabindex="-1"></a>The left part looks like it could benefit from a bit more resolution: So we replace $V_1^0$ by $V_2^0 \bigoplus V_2^1$</span>
+<span id="cb14-293"><a href="#cb14-293" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-294"><a href="#cb14-294" aria-hidden="true" tabindex="-1"></a>V = V_2^0 \bigoplus V_2^1 \bigoplus V_1^1. </span>
+<span id="cb14-295"><a href="#cb14-295" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-296"><a href="#cb14-296" aria-hidden="true" tabindex="-1"></a>Projected to $V$ our function know looks like</span>
+<span id="cb14-299"><a href="#cb14-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-300"><a href="#cb14-300" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb14-301"><a href="#cb14-301" aria-hidden="true" tabindex="-1"></a>LL  <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">2</span>,l<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb14-302"><a href="#cb14-302" aria-hidden="true" tabindex="-1"></a>LR  <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">2</span>,l<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb14-303"><a href="#cb14-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-304"><a href="#cb14-304" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb14-305"><a href="#cb14-305" aria-hidden="true" tabindex="-1"></a>plt.plot(x,fx, color<span class="op">=</span><span class="st">"black"</span>, label<span class="op">=</span><span class="st">"f(x)"</span>)</span>
+<span id="cb14-306"><a href="#cb14-306" aria-hidden="true" tabindex="-1"></a>plt.plot(x,LL(x), color<span class="op">=</span><span class="st">"tab:red"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_2^0$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb14-307"><a href="#cb14-307" aria-hidden="true" tabindex="-1"></a>plt.plot(x,LR(x), color<span class="op">=</span><span class="st">"forestgreen"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_2^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb14-308"><a href="#cb14-308" aria-hidden="true" tabindex="-1"></a>plt.plot(x,R(x), color<span class="op">=</span><span class="st">"navy"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_1^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb14-309"><a href="#cb14-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-310"><a href="#cb14-310" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb14-311"><a href="#cb14-311" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-312"><a href="#cb14-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-313"><a href="#cb14-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-314"><a href="#cb14-314" aria-hidden="true" tabindex="-1"></a>Let's repreat this two times more with the leftmost space. Our approximate space is then</span>
+<span id="cb14-315"><a href="#cb14-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-316"><a href="#cb14-316" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-317"><a href="#cb14-317" aria-hidden="true" tabindex="-1"></a>V = V_4^0 \bigoplus V_4^1 \bigoplus V_3^1 \bigoplus V_2^1 \bigoplus V_1^1 </span>
+<span id="cb14-318"><a href="#cb14-318" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-319"><a href="#cb14-319" aria-hidden="true" tabindex="-1"></a>which results in the representation</span>
+<span id="cb14-322"><a href="#cb14-322" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-323"><a href="#cb14-323" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb14-324"><a href="#cb14-324" aria-hidden="true" tabindex="-1"></a>LLLR  <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">4</span>,l<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb14-325"><a href="#cb14-325" aria-hidden="true" tabindex="-1"></a>LLLL  <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">4</span>,l<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb14-326"><a href="#cb14-326" aria-hidden="true" tabindex="-1"></a>LLR  <span class="op">=</span> ProjectedFunction(f,k<span class="op">=</span><span class="dv">5</span>,n<span class="op">=</span><span class="dv">3</span>,l<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb14-327"><a href="#cb14-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-328"><a href="#cb14-328" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb14-329"><a href="#cb14-329" aria-hidden="true" tabindex="-1"></a>plt.plot(x,fx, color<span class="op">=</span><span class="st">"black"</span>, label<span class="op">=</span><span class="st">"f(x)"</span>)</span>
+<span id="cb14-330"><a href="#cb14-330" aria-hidden="true" tabindex="-1"></a>plt.plot(x,LLLL(x), color<span class="op">=</span><span class="st">"tab:red"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_4^0$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb14-331"><a href="#cb14-331" aria-hidden="true" tabindex="-1"></a>plt.plot(x,LLLR(x), color<span class="op">=</span><span class="st">"tab:blue"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_4^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb14-332"><a href="#cb14-332" aria-hidden="true" tabindex="-1"></a>plt.plot(x,LLR(x), color<span class="op">=</span><span class="st">"tab:green"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_3^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb14-333"><a href="#cb14-333" aria-hidden="true" tabindex="-1"></a>plt.plot(x,LR(x), color<span class="op">=</span><span class="st">"forestgreen"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_2^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb14-334"><a href="#cb14-334" aria-hidden="true" tabindex="-1"></a>plt.plot(x,R(x), color<span class="op">=</span><span class="st">"navy"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">r"$V_1^1$"</span>.<span class="bu">format</span>(k))</span>
+<span id="cb14-335"><a href="#cb14-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-336"><a href="#cb14-336" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb14-337"><a href="#cb14-337" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-338"><a href="#cb14-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-339"><a href="#cb14-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-340"><a href="#cb14-340" aria-hidden="true" tabindex="-1"></a>doesn't look too bad.  </span>
+<span id="cb14-341"><a href="#cb14-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-342"><a href="#cb14-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-343"><a href="#cb14-343" aria-hidden="true" tabindex="-1"></a><span class="fu"># Wrap Up</span></span>
+<span id="cb14-344"><a href="#cb14-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-345"><a href="#cb14-345" aria-hidden="true" tabindex="-1"></a>We have seen a small toy model of MRA in the context of initial function projection. An initial approximation space $V_0$ spanned by a set of $k$ polynomials supported on the intercal $<span class="co">[</span><span class="ot">0,1</span><span class="co">]</span>$ is shifted and rescaled to new spaces $V_1^0$ and $V_1^1$ supported on the invervals $<span class="co">[</span><span class="ot">0,\frac{1}{2}</span><span class="co">]</span>$ and $<span class="co">[</span><span class="ot">\frac{1}{2},1</span><span class="co">]</span>$. With this procedure we have increased the *resolution* of the original interval.</span>
+<span id="cb14-346"><a href="#cb14-346" aria-hidden="true" tabindex="-1"></a>The process can now be repeated for the new spaces to further increase the resolution locally leading to a tree-like structure of the representation (see the very first figure in this post). This covers the essential idea behind multiresolution representations of functions.  </span>
+<span id="cb14-347"><a href="#cb14-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-348"><a href="#cb14-348" aria-hidden="true" tabindex="-1"></a>However, we have yet to see the *wavelets* - the orthogonal complement of $V_0$ in $V_{1}$. They will be the key in automatizing the refinement process sketched above. </span>
+<span id="cb14-349"><a href="#cb14-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-350"><a href="#cb14-350" aria-hidden="true" tabindex="-1"></a><span class="fu"># Further Reading</span></span>
+<span id="cb14-351"><a href="#cb14-351" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Chapter 2</span><span class="co">](https://edoc.hu-berlin.de/bitstream/handle/18452/20118/dissertation_kottmann_jakob.pdf)</span>: Condensed overview of MRA with Alpert-Wavelets including operator construction and $N$-dimensional functions.</span>
+<span id="cb14-352"><a href="#cb14-352" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Review</span><span class="co">](https://www.sciencedirect.com/science/article/pii/S006532761930019X)</span> from Florian Bischoff: operator construction, operations on MRA representations (addition, multiplication) and applications in chemistry.</span>
+<span id="cb14-353"><a href="#cb14-353" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Chapter 2</span><span class="co">](https://munin.uit.no/bitstream/handle/10037/6151/thesis.pdf?sequence=2)</span>: Dissertation from Stig-Rune Jensen</span>
+<span id="cb14-354"><a href="#cb14-354" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Original</span><span class="co">](https://escholarship.org/content/qt99r1z7ww/qt99r1z7ww_noSplash_ce6a3bf4261de4dc6ac9c7a680842b7f.pdf)</span> article from Bradley Alpert </span>
+<span id="cb14-355"><a href="#cb14-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-356"><a href="#cb14-356" aria-hidden="true" tabindex="-1"></a>Codebases:  </span>
+<span id="cb14-357"><a href="#cb14-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-358"><a href="#cb14-358" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">madness</span><span class="co">](https://github.com/m-a-d-n-e-s-s/madness)</span> (c++)  </span>
+<span id="cb14-359"><a href="#cb14-359" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">mrchem</span><span class="co">](https://github.com/MRChemSoft/mrchem)</span> (c++)  </span>
+<span id="cb14-360"><a href="#cb14-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-361"><a href="#cb14-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-362"><a href="#cb14-362" aria-hidden="true" tabindex="-1"></a><span class="fu"># Dependencies</span></span>
+<span id="cb14-363"><a href="#cb14-363" aria-hidden="true" tabindex="-1"></a>In order to run the code from this post you need numpy (version 1.21) and scipy (version 1.9.3):</span>
+<span id="cb14-366"><a href="#cb14-366" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb14-367"><a href="#cb14-367" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> numpy </span>
+<span id="cb14-368"><a href="#cb14-368" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> scipy</span>
+<span id="cb14-369"><a href="#cb14-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
+
+
+</body></html>
