@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/mol-circuits/index.html",
       "/posts/mra-basics/index.html",
       "/posts/electronic-hamiltonians/index.html",
       "/posts/tq-circuits/index.html",

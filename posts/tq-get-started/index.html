@@ -303,9 +303,6 @@ here is a small example with the Hamiltonian <span class="math display">\[ H = X
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> tq.paulis.X([<span class="dv">0</span>,<span class="dv">1</span>]) <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>tq.paulis.Z([<span class="dv">0</span>,<span class="dv">1</span>])</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> tq.gates.Ry(<span class="st">"a"</span>, <span class="dv">0</span>) <span class="op">+</span> tq.gates.X(<span class="dv">1</span>,control<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> tq.ExpectationValue(H<span class="op">=</span>H, U<span class="op">=</span>U)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>&lt;frozen importlib._bootstrap&gt;:228: RuntimeWarning: scipy._lib.messagestream.MessageStream size changed, may indicate binary incompatibility. Expected 56 from C header, got 64 from PyObject</code></pre>
-</div>
 </div>
 <p>note that we have parametrized one of the gates (marked in pink), so that our expectation value becomes a function of this paramteter <span class="math display">\[E=f(a).\]</span></p>
 </section>
@@ -313,9 +310,9 @@ here is a small example with the Hamiltonian <span class="math display">\[ H = X
 <h2 class="anchored" data-anchor-id="evaluate-the-expectation-value">Evaluate the Expectation Value</h2>
 <p>We can evaluate the expectation value by compiling it to a backend (a simulator or interface to some quantum hardware)</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> tq.<span class="bu">compile</span>(E)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>evaluated <span class="op">=</span> f({<span class="st">"a"</span>:<span class="fl">1.0</span>})</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"f(1.0) = </span><span class="sc">{:+2.4f}</span><span class="st">"</span>.<span class="bu">format</span>(evaluated))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> tq.<span class="bu">compile</span>(E)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>evaluated <span class="op">=</span> f({<span class="st">"a"</span>:<span class="fl">1.0</span>})</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"f(1.0) = </span><span class="sc">{:+2.4f}</span><span class="st">"</span>.<span class="bu">format</span>(evaluated))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>f(1.0) = +1.3415</code></pre>
 </div>
@@ -323,10 +320,10 @@ here is a small example with the Hamiltonian <span class="math display">\[ H = X
 <p>if you have installed qulacs before then <code>tq.compile</code> translated the underlying objects to qulacs. Otherwise another simulator on your system, or the horrible tequila debug simulator was used. You can figure out which simulators you have installed by calling <code>tq.show_available_simualtors</code>. When passing <code>backend="qulacs"</code> to <code>tq.compile</code> you can speficy which backend you want to compile to.</p>
 <p>If ever in doubt if the current object is already compiled, just print it</p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"abstract expectation value is:"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"compiled function is:"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"abstract expectation value is:"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"compiled function is:"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>abstract expectation value is:
 Objective with 1 unique expectation values
@@ -347,8 +344,8 @@ types              = [&lt;class 'tequila.simulators.simulator_qulacs.BackendExpe
 <p>The expecation value can be used to define more complicated objects. Here are some examples:</p>
 <p>The gradient <span class="math display">\[ \frac{\partial }{\partial a } E(a) \]</span> with respect to variable <code>a</code> can be computed as</p>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dE <span class="op">=</span> tq.grad(E,<span class="st">"a"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dE <span class="op">=</span> tq.grad(E,<span class="st">"a"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Objective with 2 unique expectation values
 total measurements = 4
@@ -358,9 +355,9 @@ types              = not compiled</code></pre>
 </div>
 <p>and the corresponding object can then be compiled and evaluated in the same way</p>
 <div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> tq.<span class="bu">compile</span>(dE)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>evaluated <span class="op">=</span> df({<span class="st">"a"</span>:<span class="fl">1.0</span>})</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df/da(1.0 = </span><span class="sc">{:+2.4f}</span><span class="st">"</span>.<span class="bu">format</span>(evaluated))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> tq.<span class="bu">compile</span>(dE)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>evaluated <span class="op">=</span> df({<span class="st">"a"</span>:<span class="fl">1.0</span>})</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df/da(1.0 = </span><span class="sc">{:+2.4f}</span><span class="st">"</span>.<span class="bu">format</span>(evaluated))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>df/da(1.0 = +0.5403</code></pre>
 </div>
@@ -371,28 +368,28 @@ types              = not compiled</code></pre>
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>Let’s create the function <span class="math display">\[ L(a) = \frac{\partial E}{\partial a}(a) E(a)^3 + e^{-\left(\frac{\partial E }{\partial a}(a) \right)^2} \]</span></p>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> E<span class="op">**</span><span class="dv">3</span><span class="op">*</span>dE <span class="op">+</span>  (<span class="op">-</span>dE<span class="op">**</span><span class="dv">2</span>).<span class="bu">apply</span>(tq.numpy.exp)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> tq.<span class="bu">compile</span>(L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> E<span class="op">**</span><span class="dv">3</span><span class="op">*</span>dE <span class="op">+</span>  (<span class="op">-</span>dE<span class="op">**</span><span class="dv">2</span>).<span class="bu">apply</span>(tq.numpy.exp)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> tq.<span class="bu">compile</span>(L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>and now let’s have a look how this function and it’s gradient <span class="math inline">\(\frac{\partial L}{\partial a}\)</span> looks like</p>
 <div class="cell" data-execution_count="7">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get the abstract gradient and compile</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>dL <span class="op">=</span> tq.grad(L, <span class="st">"a"</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>dl <span class="op">=</span> tq.<span class="bu">compile</span>(dL)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">list</span>(numpy.linspace(<span class="op">-</span>numpy.pi, numpy.pi, <span class="dv">100</span>))</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> [ l({<span class="st">"a"</span>:xx}) <span class="cf">for</span> xx <span class="kw">in</span> x]</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> [ dl({<span class="st">"a"</span>:xx}) <span class="cf">for</span> xx <span class="kw">in</span> x]</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y0, label<span class="op">=</span><span class="st">"$L(a)$"</span>, color<span class="op">=</span><span class="st">"navy"</span>)</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y1, label<span class="op">=</span><span class="vs">r"$\frac{\partial L}{\partial a}(a)$"</span>, color<span class="op">=</span><span class="st">"tab:red"</span>)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"fig.png"</span>)</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get the abstract gradient and compile</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>dL <span class="op">=</span> tq.grad(L, <span class="st">"a"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>dl <span class="op">=</span> tq.<span class="bu">compile</span>(dL)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">list</span>(numpy.linspace(<span class="op">-</span>numpy.pi, numpy.pi, <span class="dv">100</span>))</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> [ l({<span class="st">"a"</span>:xx}) <span class="cf">for</span> xx <span class="kw">in</span> x]</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> [ dl({<span class="st">"a"</span>:xx}) <span class="cf">for</span> xx <span class="kw">in</span> x]</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y0, label<span class="op">=</span><span class="st">"$L(a)$"</span>, color<span class="op">=</span><span class="st">"navy"</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y1, label<span class="op">=</span><span class="vs">r"$\frac{\partial L}{\partial a}(a)$"</span>, color<span class="op">=</span><span class="st">"tab:red"</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"fig.png"</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <p><img src="index_files/figure-html/cell-8-output-1.png" width="569" height="411"></p>
@@ -706,148 +703,148 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <script src="https://utteranc.es/client.js" repo="kottmanj/blog" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async="">
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb15" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Tequila Basics: Getting Started"</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Jakob Kottmann"</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-11-03"</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [tequila, code]</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> tq-basics-pic.png</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">    html:</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">        code-fold: false</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">        eval: true</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> tq-pypi</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>Create some abstract quantum functions with tequila</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;center&gt;</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="al">![](tq-basics-pic.png)</span>{width=400}</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/center&gt;</span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Installation</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>if you are on Linux or Mac, you can install tequila directly from the PyPi cloud via</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install tequila-basic</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>this installs you the tequila package with only the absolutely necessary dependencies.  </span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>Using windows as an operating systems will lead to errors here as the jax library is not supported.  </span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>In the future there will be a separate blog entry for windows users, meanwhile see the github <span class="co">[</span><span class="ot">readme</span><span class="co">](https://github.com/tequilahub/tequila/)</span>.  </span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>Not necessary but recommended it the installation of a capable simulator for you quantum circuits. Tequila supports the usual suspects, the by far fastest option is however the <span class="co">[</span><span class="ot">qualcs</span><span class="co">](https://github.com/qualcs)</span> simulator that can conveniently be installed as</span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install qulacs</span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span> </span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## Define an Expectation Value</span></span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>An expectation value $E = \langle H \rangle_U$ consists of two parts: </span>
-<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>a quantum circuit <span class="in">`U`</span> (a unitary operation expressed as a sequence of unitaries) that defines the wavefunction</span>
-<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>a qubit Hamiltonian <span class="in">`H`</span> (an hermitian operator exporessed in Pauli-strings)</span>
-<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>here is a small example with the Hamiltonian</span>
-<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>$$ H = X(0)X(1) + \frac{1}{2} Z(0)Z(1) $$</span>
-<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>and the quantum circuit  </span>
-<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;center&gt;</span></span>
-<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;img</span> <span class="er">src</span><span class="ot">=</span><span class="st">"circuit.png"</span> <span class="er">width</span><span class="ot">=</span><span class="st">30%</span> <span class="er">fig-align</span><span class="ot">=</span><span class="st">"center"</span><span class="kw">&gt;</span></span>
-<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/center&gt;</span></span>
-<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tequila <span class="im">as</span> tq</span>
-<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> tq.paulis.X([<span class="dv">0</span>,<span class="dv">1</span>]) <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>tq.paulis.Z([<span class="dv">0</span>,<span class="dv">1</span>])</span>
-<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> tq.gates.Ry(<span class="st">"a"</span>, <span class="dv">0</span>) <span class="op">+</span> tq.gates.X(<span class="dv">1</span>,control<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> tq.ExpectationValue(H<span class="op">=</span>H, U<span class="op">=</span>U)</span>
-<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a>note that we have parametrized one of the gates (marked in pink), so that our expectation value becomes a function of this paramteter $$E=f(a).$$</span>
-<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## Evaluate the Expectation Value</span></span>
-<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a>We can evaluate the expectation value by compiling it to a backend (a simulator or interface to some quantum hardware)</span>
-<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> tq.<span class="bu">compile</span>(E)</span>
-<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a>evaluated <span class="op">=</span> f({<span class="st">"a"</span>:<span class="fl">1.0</span>})</span>
-<span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"f(1.0) = </span><span class="sc">{:+2.4f}</span><span class="st">"</span>.<span class="bu">format</span>(evaluated))</span>
-<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a>if you have installed qulacs before then <span class="in">`tq.compile`</span> translated the underlying objects to qulacs. Otherwise another simulator on your system, or the horrible tequila debug simulator was used. You can figure out which simulators you have installed by calling <span class="in">`tq.show_available_simualtors`</span>. When passing <span class="in">`backend="qulacs"`</span> to <span class="in">`tq.compile`</span> you can speficy which backend you want to compile to.  </span>
-<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a>If ever in doubt if the current object is already compiled, just print it</span>
-<span id="cb15-83"><a href="#cb15-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"abstract expectation value is:"</span>)</span>
-<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E)</span>
-<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"compiled function is:"</span>)</span>
-<span id="cb15-87"><a href="#cb15-87" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f)</span>
-<span id="cb15-88"><a href="#cb15-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-89"><a href="#cb15-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-90"><a href="#cb15-90" aria-hidden="true" tabindex="-1"></a>The printput states that our objects are <span class="in">`tq.Objectives`</span> with a given number of unique expectation values. More about this now.</span>
-<span id="cb15-91"><a href="#cb15-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-92"><a href="#cb15-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## Differentiate and Manipulate Expectation Values</span></span>
-<span id="cb15-93"><a href="#cb15-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-94"><a href="#cb15-94" aria-hidden="true" tabindex="-1"></a>The expecation value can be used to define more complicated objects. Here are some examples:  </span>
-<span id="cb15-95"><a href="#cb15-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-96"><a href="#cb15-96" aria-hidden="true" tabindex="-1"></a>The gradient</span>
-<span id="cb15-97"><a href="#cb15-97" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial }{\partial a } E(a) $$</span>
-<span id="cb15-98"><a href="#cb15-98" aria-hidden="true" tabindex="-1"></a>with respect to variable <span class="in">`a`</span> can be computed as</span>
-<span id="cb15-101"><a href="#cb15-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb15-102"><a href="#cb15-102" aria-hidden="true" tabindex="-1"></a>dE <span class="op">=</span> tq.grad(E,<span class="st">"a"</span>)</span>
-<span id="cb15-103"><a href="#cb15-103" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dE)</span>
-<span id="cb15-104"><a href="#cb15-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-105"><a href="#cb15-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-106"><a href="#cb15-106" aria-hidden="true" tabindex="-1"></a>and the corresponding object can then be compiled and evaluated in the same way</span>
-<span id="cb15-109"><a href="#cb15-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb15-110"><a href="#cb15-110" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> tq.<span class="bu">compile</span>(dE)</span>
-<span id="cb15-111"><a href="#cb15-111" aria-hidden="true" tabindex="-1"></a>evaluated <span class="op">=</span> df({<span class="st">"a"</span>:<span class="fl">1.0</span>})</span>
-<span id="cb15-112"><a href="#cb15-112" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df/da(1.0 = </span><span class="sc">{:+2.4f}</span><span class="st">"</span>.<span class="bu">format</span>(evaluated))</span>
-<span id="cb15-113"><a href="#cb15-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-114"><a href="#cb15-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-115"><a href="#cb15-115" aria-hidden="true" tabindex="-1"></a>apart from differentiating we can also combine the <span class="in">`tq.Objective`</span> objects. The final example illustrates most of these possibilities.</span>
-<span id="cb15-116"><a href="#cb15-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-117"><a href="#cb15-117" aria-hidden="true" tabindex="-1"></a><span class="fu">## Example</span></span>
-<span id="cb15-118"><a href="#cb15-118" aria-hidden="true" tabindex="-1"></a>Let's create the function</span>
-<span id="cb15-119"><a href="#cb15-119" aria-hidden="true" tabindex="-1"></a>$$ L(a) = \frac{\partial E}{\partial a}(a) E(a)^3 + e^{-\left(\frac{\partial E }{\partial a}(a) \right)^2} $$</span>
-<span id="cb15-122"><a href="#cb15-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb15-123"><a href="#cb15-123" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> E<span class="op">**</span><span class="dv">3</span><span class="op">*</span>dE <span class="op">+</span>  (<span class="op">-</span>dE<span class="op">**</span><span class="dv">2</span>).<span class="bu">apply</span>(tq.numpy.exp)</span>
-<span id="cb15-124"><a href="#cb15-124" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> tq.<span class="bu">compile</span>(L)</span>
-<span id="cb15-125"><a href="#cb15-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-126"><a href="#cb15-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-127"><a href="#cb15-127" aria-hidden="true" tabindex="-1"></a>and now let's have a look how this function and it's gradient $\frac{\partial L}{\partial a}$ looks like </span>
-<span id="cb15-128"><a href="#cb15-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-131"><a href="#cb15-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb15-132"><a href="#cb15-132" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb15-133"><a href="#cb15-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-134"><a href="#cb15-134" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy</span>
-<span id="cb15-135"><a href="#cb15-135" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb15-136"><a href="#cb15-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-137"><a href="#cb15-137" aria-hidden="true" tabindex="-1"></a><span class="co"># get the abstract gradient and compile</span></span>
-<span id="cb15-138"><a href="#cb15-138" aria-hidden="true" tabindex="-1"></a>dL <span class="op">=</span> tq.grad(L, <span class="st">"a"</span>)</span>
-<span id="cb15-139"><a href="#cb15-139" aria-hidden="true" tabindex="-1"></a>dl <span class="op">=</span> tq.<span class="bu">compile</span>(dL)</span>
-<span id="cb15-140"><a href="#cb15-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-141"><a href="#cb15-141" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">list</span>(numpy.linspace(<span class="op">-</span>numpy.pi, numpy.pi, <span class="dv">100</span>))</span>
-<span id="cb15-142"><a href="#cb15-142" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> [ l({<span class="st">"a"</span>:xx}) <span class="cf">for</span> xx <span class="kw">in</span> x]</span>
-<span id="cb15-143"><a href="#cb15-143" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> [ dl({<span class="st">"a"</span>:xx}) <span class="cf">for</span> xx <span class="kw">in</span> x]</span>
-<span id="cb15-144"><a href="#cb15-144" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y0, label<span class="op">=</span><span class="st">"$L(a)$"</span>, color<span class="op">=</span><span class="st">"navy"</span>)</span>
-<span id="cb15-145"><a href="#cb15-145" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y1, label<span class="op">=</span><span class="vs">r"$\frac{\partial L}{\partial a}(a)$"</span>, color<span class="op">=</span><span class="st">"tab:red"</span>)</span>
-<span id="cb15-146"><a href="#cb15-146" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb15-147"><a href="#cb15-147" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"fig.png"</span>)</span>
-<span id="cb15-148"><a href="#cb15-148" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb15-149"><a href="#cb15-149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-150"><a href="#cb15-150" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb15-151"><a href="#cb15-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-152"><a href="#cb15-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-153"><a href="#cb15-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-154"><a href="#cb15-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-155"><a href="#cb15-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-156"><a href="#cb15-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-157"><a href="#cb15-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-158"><a href="#cb15-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-159"><a href="#cb15-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-160"><a href="#cb15-160" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb14" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Tequila Basics: Getting Started"</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Jakob Kottmann"</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-11-03"</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [tequila, code]</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> tq-basics-pic.png</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">    html:</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">        code-fold: false</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">        eval: true</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> tq-pypi</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>Create some abstract quantum functions with tequila</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;center&gt;</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="al">![](tq-basics-pic.png)</span>{width=400}</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/center&gt;</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Installation</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>if you are on Linux or Mac, you can install tequila directly from the PyPi cloud via</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install tequila-basic</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>this installs you the tequila package with only the absolutely necessary dependencies.  </span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>Using windows as an operating systems will lead to errors here as the jax library is not supported.  </span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>In the future there will be a separate blog entry for windows users, meanwhile see the github <span class="co">[</span><span class="ot">readme</span><span class="co">](https://github.com/tequilahub/tequila/)</span>.  </span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>Not necessary but recommended it the installation of a capable simulator for you quantum circuits. Tequila supports the usual suspects, the by far fastest option is however the <span class="co">[</span><span class="ot">qualcs</span><span class="co">](https://github.com/qualcs)</span> simulator that can conveniently be installed as</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install qulacs</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span> </span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## Define an Expectation Value</span></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>An expectation value $E = \langle H \rangle_U$ consists of two parts: </span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>a quantum circuit <span class="in">`U`</span> (a unitary operation expressed as a sequence of unitaries) that defines the wavefunction</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>a qubit Hamiltonian <span class="in">`H`</span> (an hermitian operator exporessed in Pauli-strings)</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>here is a small example with the Hamiltonian</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>$$ H = X(0)X(1) + \frac{1}{2} Z(0)Z(1) $$</span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>and the quantum circuit  </span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;center&gt;</span></span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;img</span> <span class="er">src</span><span class="ot">=</span><span class="st">"circuit.png"</span> <span class="er">width</span><span class="ot">=</span><span class="st">30%</span> <span class="er">fig-align</span><span class="ot">=</span><span class="st">"center"</span><span class="kw">&gt;</span></span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/center&gt;</span></span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tequila <span class="im">as</span> tq</span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> tq.paulis.X([<span class="dv">0</span>,<span class="dv">1</span>]) <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>tq.paulis.Z([<span class="dv">0</span>,<span class="dv">1</span>])</span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> tq.gates.Ry(<span class="st">"a"</span>, <span class="dv">0</span>) <span class="op">+</span> tq.gates.X(<span class="dv">1</span>,control<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> tq.ExpectationValue(H<span class="op">=</span>H, U<span class="op">=</span>U)</span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>note that we have parametrized one of the gates (marked in pink), so that our expectation value becomes a function of this paramteter $$E=f(a).$$</span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## Evaluate the Expectation Value</span></span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>We can evaluate the expectation value by compiling it to a backend (a simulator or interface to some quantum hardware)</span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> tq.<span class="bu">compile</span>(E)</span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a>evaluated <span class="op">=</span> f({<span class="st">"a"</span>:<span class="fl">1.0</span>})</span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"f(1.0) = </span><span class="sc">{:+2.4f}</span><span class="st">"</span>.<span class="bu">format</span>(evaluated))</span>
+<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a>if you have installed qulacs before then <span class="in">`tq.compile`</span> translated the underlying objects to qulacs. Otherwise another simulator on your system, or the horrible tequila debug simulator was used. You can figure out which simulators you have installed by calling <span class="in">`tq.show_available_simualtors`</span>. When passing <span class="in">`backend="qulacs"`</span> to <span class="in">`tq.compile`</span> you can speficy which backend you want to compile to.  </span>
+<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a>If ever in doubt if the current object is already compiled, just print it</span>
+<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"abstract expectation value is:"</span>)</span>
+<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E)</span>
+<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"compiled function is:"</span>)</span>
+<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f)</span>
+<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a>The printput states that our objects are <span class="in">`tq.Objectives`</span> with a given number of unique expectation values. More about this now.</span>
+<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## Differentiate and Manipulate Expectation Values</span></span>
+<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a>The expecation value can be used to define more complicated objects. Here are some examples:  </span>
+<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a>The gradient</span>
+<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial }{\partial a } E(a) $$</span>
+<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a>with respect to variable <span class="in">`a`</span> can be computed as</span>
+<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a>dE <span class="op">=</span> tq.grad(E,<span class="st">"a"</span>)</span>
+<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dE)</span>
+<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a>and the corresponding object can then be compiled and evaluated in the same way</span>
+<span id="cb14-109"><a href="#cb14-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-110"><a href="#cb14-110" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> tq.<span class="bu">compile</span>(dE)</span>
+<span id="cb14-111"><a href="#cb14-111" aria-hidden="true" tabindex="-1"></a>evaluated <span class="op">=</span> df({<span class="st">"a"</span>:<span class="fl">1.0</span>})</span>
+<span id="cb14-112"><a href="#cb14-112" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df/da(1.0 = </span><span class="sc">{:+2.4f}</span><span class="st">"</span>.<span class="bu">format</span>(evaluated))</span>
+<span id="cb14-113"><a href="#cb14-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-114"><a href="#cb14-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-115"><a href="#cb14-115" aria-hidden="true" tabindex="-1"></a>apart from differentiating we can also combine the <span class="in">`tq.Objective`</span> objects. The final example illustrates most of these possibilities.</span>
+<span id="cb14-116"><a href="#cb14-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-117"><a href="#cb14-117" aria-hidden="true" tabindex="-1"></a><span class="fu">## Example</span></span>
+<span id="cb14-118"><a href="#cb14-118" aria-hidden="true" tabindex="-1"></a>Let's create the function</span>
+<span id="cb14-119"><a href="#cb14-119" aria-hidden="true" tabindex="-1"></a>$$ L(a) = \frac{\partial E}{\partial a}(a) E(a)^3 + e^{-\left(\frac{\partial E }{\partial a}(a) \right)^2} $$</span>
+<span id="cb14-122"><a href="#cb14-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-123"><a href="#cb14-123" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> E<span class="op">**</span><span class="dv">3</span><span class="op">*</span>dE <span class="op">+</span>  (<span class="op">-</span>dE<span class="op">**</span><span class="dv">2</span>).<span class="bu">apply</span>(tq.numpy.exp)</span>
+<span id="cb14-124"><a href="#cb14-124" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> tq.<span class="bu">compile</span>(L)</span>
+<span id="cb14-125"><a href="#cb14-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-126"><a href="#cb14-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-127"><a href="#cb14-127" aria-hidden="true" tabindex="-1"></a>and now let's have a look how this function and it's gradient $\frac{\partial L}{\partial a}$ looks like </span>
+<span id="cb14-128"><a href="#cb14-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-131"><a href="#cb14-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-132"><a href="#cb14-132" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb14-133"><a href="#cb14-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-134"><a href="#cb14-134" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy</span>
+<span id="cb14-135"><a href="#cb14-135" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-136"><a href="#cb14-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a><span class="co"># get the abstract gradient and compile</span></span>
+<span id="cb14-138"><a href="#cb14-138" aria-hidden="true" tabindex="-1"></a>dL <span class="op">=</span> tq.grad(L, <span class="st">"a"</span>)</span>
+<span id="cb14-139"><a href="#cb14-139" aria-hidden="true" tabindex="-1"></a>dl <span class="op">=</span> tq.<span class="bu">compile</span>(dL)</span>
+<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">list</span>(numpy.linspace(<span class="op">-</span>numpy.pi, numpy.pi, <span class="dv">100</span>))</span>
+<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> [ l({<span class="st">"a"</span>:xx}) <span class="cf">for</span> xx <span class="kw">in</span> x]</span>
+<span id="cb14-143"><a href="#cb14-143" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> [ dl({<span class="st">"a"</span>:xx}) <span class="cf">for</span> xx <span class="kw">in</span> x]</span>
+<span id="cb14-144"><a href="#cb14-144" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y0, label<span class="op">=</span><span class="st">"$L(a)$"</span>, color<span class="op">=</span><span class="st">"navy"</span>)</span>
+<span id="cb14-145"><a href="#cb14-145" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y1, label<span class="op">=</span><span class="vs">r"$\frac{\partial L}{\partial a}(a)$"</span>, color<span class="op">=</span><span class="st">"tab:red"</span>)</span>
+<span id="cb14-146"><a href="#cb14-146" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"fig.png"</span>)</span>
+<span id="cb14-148"><a href="#cb14-148" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-149"><a href="#cb14-149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-150"><a href="#cb14-150" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-151"><a href="#cb14-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-152"><a href="#cb14-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-153"><a href="#cb14-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-154"><a href="#cb14-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-155"><a href="#cb14-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-156"><a href="#cb14-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-157"><a href="#cb14-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
