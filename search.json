@@ -109,7 +109,7 @@
     "href": "posts/mol-circuits/index.html",
     "title": "Molecular Quantum Circuits in a Nutshell",
     "section": "",
-    "text": "Chemical graphs are a powerful abstraction concept, that enables chemists to derive chemical properties or even estimate possible reactions from a remarkably simple structure. Applied to the design of quantum circuits for electronic ground states (the ground states of molecules), chemical graphs allow physical insight into construction, optimization, and interpretation of quantum circuits.\nA detailed description of this methodology is given in arxiv:2207.12421 (recently published in Quantum). In this blog entry we will try to approach this circuit design principle through an explicit example. We will use tequila, which has been introduced in other blog entries"
+    "text": "Physical insights into the construction of quantum circuits.\nChemical graphs are a powerful abstraction concept, that enables chemists to derive chemical properties or even estimate possible reactions from a remarkably simple structure. Applied to the design of quantum circuits for electronic ground states (the ground states of molecules), chemical graphs allow physical insight into construction, optimization, and interpretation of quantum circuits.\nA detailed description of this methodology is given in arxiv:2207.12421 (recently published in Quantum). In this blog entry we will try to approach this circuit design principle through an explicit example. We will use tequila, which has been introduced in other blog entries"
   },
   {
     "objectID": "posts/mol-circuits/index.html#basic-building-blocks",
